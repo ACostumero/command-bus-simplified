@@ -1,0 +1,13 @@
+<div class="color-resource" *ngIf="resource">
+  <div class="color-resource__background" [ngStyle]="{'background': resource.color}">
+    <div class="color-resource__background--title font-medium">
+      <h3 class="no-margin font-regular">Color of the year</h3>
+      <h2 class="no-margin font-regular">{{ resource.year }}</h2>
+    </div>
+  </div>
+  <div class="color-resource__info">
+    <h2 class="no-margin font-bold">PANTONE<sup class="color-resource__info--pantone-reg">&reg;</sup></h2>
+    <h4 class="color-resource__info--pantone-value no-margin">{{ resource.pantone_value }}</h4>
+    <h3 class="color-resource__info--name font-regular no-margin">{{ resource.name }}</h3>
+  </div>
+  </div>

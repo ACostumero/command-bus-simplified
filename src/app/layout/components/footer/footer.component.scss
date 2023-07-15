@@ -1,0 +1,25 @@
+$block: 'footer';
+
+.#{$block} {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  padding-inline: 36px;
+  &__author {
+    display: flex;
+    gap: 8px;
+    &--icon-wrapper {
+      width: 20px;
+      height: 20px;
+      overflow: hidden;
+      img {
+        width: 100%;
+        height: 100%;
+        background-size: contain;
+      }
+    }
+  }
+}

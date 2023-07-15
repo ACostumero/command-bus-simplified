@@ -1,0 +1,47 @@
+$font-family-heavy: 'neue-helvetica-bq-heavy';
+$font-family-bold: 'neue-helvetica-bq-bold';
+$font-family-regular : 'neue-helvetica-bq-medium';
+$font-family-light : 'neue-helvetica-bq-light';
+
+@font-face {
+  font-family: $font-family-heavy;
+  src: url('~src/assets/fonts/NeueHelveticaBQHeavy.otf');
+}
+
+@font-face {
+  font-family: $font-family-bold;
+  src: url('~src/assets/fonts/NeueHelveticaBQBold.otf');
+}
+
+@font-face {
+  font-family: $font-family-regular;
+  src: url('~src/assets/fonts/NeueHelveticaBQMedium.otf');
+}
+
+@font-face {
+  font-family: $font-family-light;
+  src: url('~src/assets/fonts/NeueHelveticaBQLight.otf');
+}
+
+h1 {
+  font-family: $font-family-bold;
+}
+
+.font-heavy {
+  font-family: $font-family-heavy;
+}
+
+.font-bold {
+  font-family: $font-family-bold;
+}
+
+.font-regular {
+  font-family: $font-family-regular;
+}
+
+.font-light {
+  font-family: $font-family-light;
+}
+
+
+

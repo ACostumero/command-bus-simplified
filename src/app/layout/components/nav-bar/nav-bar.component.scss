@@ -1,0 +1,15 @@
+$block: 'navigation';
+
+.#{$block} {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--primary-color);
+
+  &--button-wrapper {
+    &.active {
+      background: var(--primary-accent-color);
+    }
+  }
+
+}

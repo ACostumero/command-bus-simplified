@@ -1,0 +1,32 @@
+$block: 'layout';
+
+.#{$block} {
+  display: flex;
+  flex-flow: row wrap;
+  height: 100vh;
+
+  &__nav {
+    flex: 0 1 60px;
+    height: calc(100vh - 48px);
+  }
+
+  &__main {
+    background: #3c3c3c;
+    flex: 1;
+    // Calculate height: (ViewportHeight - footerHeight - (verticalPadding))
+    height: calc(100vh - 48px - (24px * 2)); // TODO: Create variables
+    overflow: auto;
+    padding: 24px 40px; // TODO: Modify padding on mobile layouts
+  }
+
+  &__aside {
+    flex: 0 1 20vw;
+    display: none; // TODO: Remove when has been implemented
+  }
+
+  &__footer {
+    height: 48px;
+    flex: 0 1 100%;
+    background: white;
+  }
+}
