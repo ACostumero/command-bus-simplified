@@ -3,9 +3,9 @@ $block: 'color-resource';
 .#{$block} {
   display: flex;
   flex-direction: column;
-  aspect-ratio: 9/10;
   box-sizing: border-box;
   width: 200px;
+  height: 280px;
   align-items: center;
   justify-content: center;
   padding: 8px 8px 0;

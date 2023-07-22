@@ -27,8 +27,11 @@
       "@app-core/*": ["src/app/core/*"],
       "@app-modules/*": ["src/app/modules/*"],
       "@app-layout/*": ["src/app/layout/*"],
-      "@app-shared/*": ["src/app/shared/*"],
+      "@app-shared/*": [
+        "src/app/shared/*"
+      ],
     },
+    "types": ["reflect-metadata"]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
