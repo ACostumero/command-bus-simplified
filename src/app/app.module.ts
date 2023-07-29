@@ -7,6 +7,7 @@ import {CommandHandlerModule} from '@app-core/command-bus/modules/command-handle
 import {CommandBusModule} from '@app-core/command-bus/command-bus.module';
 import {CommandBus} from '@app-core/command-bus/command-bus';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CommandHandlerModule.forRoot(),
     CommandBusModule.forRoot(),
     BrowserAnimationsModule,
+    HttpClientModule
   ],
   providers: [CommandBus],
   bootstrap: [AppComponent]
