@@ -6,6 +6,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {CommandHandlerModule} from '@app-core/command-bus/modules/command-handler.module';
 import {CommandBusModule} from '@app-core/command-bus/command-bus.module';
 import {CommandBus} from '@app-core/command-bus/command-bus';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import {CommandBus} from '@app-core/command-bus/command-bus';
     AppRoutingModule,
     CommandHandlerModule.forRoot(),
     CommandBusModule.forRoot(),
+    BrowserAnimationsModule,
   ],
   providers: [CommandBus],
   bootstrap: [AppComponent]
