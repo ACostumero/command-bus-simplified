@@ -1,0 +1,30 @@
+<div class="create-edit-user">
+  <form class="create-edit-user__form" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput type="email" formControlName="email" placeholder="Email">
+      <mat-error *ngIf="controls.email.hasError('required')">Email is required</mat-error>
+      <mat-error *ngIf="controls.email.hasError('email')">Invalid email format</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>First Name</mat-label>
+      <input matInput type="text" formControlName="firstName" placeholder="First Name">
+      <mat-error *ngIf="controls.firstName.hasError('required')">First Name is required</mat-error>
+      <mat-error *ngIf="controls.firstName.hasError('pattern')">First Name cannot be empty or contain only whitespaces</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Last Name</mat-label>
+      <input matInput type="text" formControlName="lastName" placeholder="Last Name">
+      <mat-error *ngIf="controls.lastName.hasError('required')">Last Name is required</mat-error>
+      <mat-error *ngIf="controls.lastName.hasError('pattern')">Last Name cannot be empty or contain only whitespaces</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Avatar URL</mat-label>
+      <input matInput type="text" formControlName="avatar" placeholder="Avatar URL">
+    </mat-form-field>
+  </form>
+</div>
+
