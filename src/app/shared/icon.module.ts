@@ -21,8 +21,6 @@ export class IconModule {
     private readonly _iconRegistry: MatIconRegistry,
     private readonly _sanitizer: DomSanitizer) {
       IconModule.SVG_ICONS.forEach(iconName => {
-        console.log('entran iconos', iconName);
-
         this._iconRegistry.addSvgIcon(iconName,
           this._sanitizer.bypassSecurityTrustResourceUrl(`${IconModule.SVG_ICONS_ROUTE}${iconName}.svg`));
       })

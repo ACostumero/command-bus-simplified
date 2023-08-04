@@ -21,7 +21,8 @@ const modules = [
   FormsModule,
   ReactiveFormsModule,
   IconModule,
-  HttpClientModule
+  HttpClientModule,
+  MatDialogModule,
 ]
 
 @NgModule({

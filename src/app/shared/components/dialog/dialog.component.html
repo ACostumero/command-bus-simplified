@@ -1,0 +1,17 @@
+<div class="dialog-base__header">
+  <h3 class="dialog-base__header--title mat-h3" mat-dialog-title>{{ data.title || '' }}</h3>
+  <button *ngIf="!dialog.disableClose" mat-icon-button class="dialog-base__header--close-button mat-icon-button" mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+
+<div class="dialog-base__content" [ngClass]="{'no-actions': !data.actions}">
+  <ng-container #container></ng-container>
+  <p class="dialog-base__content--text" *ngIf="!data.contentComponent">{{ data.detail }}</p>
+</div>
+<div class="dialog-base__actions" *ngIf="data.actions">
+  <button mat-flat-button [color]="action.color" *ngFor="let action of data.actions" mat-button
+          [disabled]="checkDisabled(action)" (click)="processAction(action)">
+    <span>{{ action.label }}</span>
+  </button>
+</div>

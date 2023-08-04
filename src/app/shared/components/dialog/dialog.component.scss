@@ -1,0 +1,39 @@
+
+
+$block: "dialog-base";
+
+.#{$block} {
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-block-start: 16px;
+    padding-inline: 24px;
+
+    &--title {
+      margin-bottom: 0;
+      padding-left: 0;
+    }
+  }
+
+  &__content {
+
+    &.no-actions {
+      padding-top: 0;
+    }
+
+    &--text {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding-left: 24px;
+    }
+  }
+
+  &__actions {
+    padding: 12px 18px;
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+  }
+
+}
