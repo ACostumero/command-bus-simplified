@@ -73,15 +73,7 @@ export class UsersComponent {
     });
   }
 
-  private refreshTable() {
-    console.log('refresh table');
-
-    // this.paginator._changePageSize(this.paginator.pageSize);
-  }
-
   startEdit(row: unknown) {
-    console.log('edit', row);
-
     return this._dialogService.open({
       data: {
         title: 'Editar usuario',

@@ -8,8 +8,17 @@ import {GetUsersCommandHandler} from '@app-command-handlers/get-users.command-ha
 import {GetUserByIdCommandHandler} from '@app-command-handlers/get-user-by-id.command-handler';
 import {ICommandHandler} from '@app-core/command-bus/interfaces/command-handler.interface';
 import {CommandHandlerRegistryService} from '@app-core/command-bus/services/command-handler-registry.service';
+import {CreateUserCommandHandler} from '@app-command-handlers/create-user-command-handler';
+import {EditUserCommandHandler} from '@app-command-handlers/edit-user-command-handler';
+import {DeleteUserCommandHandler} from '@app-command-handlers/delete-user-command-handler';
 
-const USERS_COMMAND_HANDLERS: Type<ICommandHandler>[] = [GetUsersCommandHandler, GetUserByIdCommandHandler];
+const USERS_COMMAND_HANDLERS: Type<ICommandHandler>[] = [
+  GetUsersCommandHandler,
+  GetUserByIdCommandHandler,
+  CreateUserCommandHandler,
+  EditUserCommandHandler,
+  DeleteUserCommandHandler
+];
 
 @NgModule({
   declarations: [UsersComponent, CreateEditUserComponent],

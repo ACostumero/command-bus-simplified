@@ -1,14 +1,14 @@
 import {Injectable} from "@angular/core";
-import {GetUserByIdCommand} from "@app-commands/get-user-by-id.command";
+import {DeleteUserCommand} from "@app-commands/delete-user.command";
 import {CommandHandler} from "@app-core/command-bus/decorators/command-handler.decorator";
 import {ICommandHandler} from "@app-core/command-bus/interfaces/command-handler.interface";
 import {Logger} from "@app-core/utils/logger.util";
 
 @Injectable()
-@CommandHandler('GetUserByIdCommand')
-export class GetUserByIdCommandHandler implements ICommandHandler {
+@CommandHandler('DeleteUserCommand')
+export class DeleteUserCommandHandler implements ICommandHandler {
 
-  public handle(command: GetUserByIdCommand) {
-    Logger.info('[GetUserByIdCommandHandler] -> handle()');
+  public handle(command: DeleteUserCommand) {
+    Logger.info('[DeleteUserCommandHandler] -> handle()');
   }
 }
