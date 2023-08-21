@@ -8,6 +8,7 @@ import {CommandBus} from '@app-core/command-bus/command-bus';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {HttpClientModule} from '@angular/common/http';
 import {MatDialogModule} from '@angular/material/dialog';
+import {CommandHandlerRegistryService} from '@app-core/command-bus/services/command-handler-registry.service';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,6 @@ import {MatDialogModule} from '@angular/material/dialog';
     HttpClientModule,
     MatDialogModule
   ],
-  providers: [CommandBus],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

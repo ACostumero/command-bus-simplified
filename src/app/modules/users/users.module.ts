@@ -18,6 +18,9 @@ const USERS_COMMAND_HANDLERS: Type<ICommandHandler>[] = [GetUsersCommandHandler,
     UsersRoutingModule,
     SharedModule,
   ],
+  providers: [
+    USERS_COMMAND_HANDLERS
+  ]
 })
 export class UsersModule {
   constructor(private readonly commandHandlerRegistryService: CommandHandlerRegistryService) {

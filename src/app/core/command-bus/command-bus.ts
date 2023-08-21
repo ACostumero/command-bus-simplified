@@ -3,7 +3,7 @@ import {ICommand} from './interfaces/command.interface';
 import {CommandHandlerNotRegistered} from './errors/command-handler-not-registered.error';
 import {CommandHandlerRegistryService} from './services/command-handler-registry.service';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class CommandBus {
   constructor(private readonly commandHandlerRegistryService: CommandHandlerRegistryService) {
 
@@ -18,9 +18,5 @@ export class CommandBus {
 
   public getHandler(commandName: string) {
     return this.commandHandlerRegistryService.getHandler(commandName);
-  }
-
-  public printHandlers() {
-    this.commandHandlerRegistryService.printHandlers();
   }
 }

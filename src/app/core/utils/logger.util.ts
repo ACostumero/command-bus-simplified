@@ -3,6 +3,7 @@ import {generateRandomHexColor} from "@app-core/functions/generate-random-hex-co
 enum LOG_LEVEL {
 DEBUG,
 INFO,
+SUCCESS,
 WARNING,
 ERROR,
 };
@@ -11,8 +12,9 @@ type TLogStyleMap = {[severity in LOG_LEVEL]: string}
 
 export class Logger {
   private static readonly logStyleMap: TLogStyleMap = {
-    [LOG_LEVEL.DEBUG]: 'color: #2196F3', // Blue
-    [LOG_LEVEL.INFO]: 'color: #4CAF50', // Green
+    [LOG_LEVEL.DEBUG]: 'color: #efd0f2', // Pink
+    [LOG_LEVEL.INFO]: 'color: #6495ED', // Blue
+    [LOG_LEVEL.SUCCESS]: 'color: #4CAF50', // Green
     [LOG_LEVEL.WARNING]: 'color: #FFC107', // Amber
     [LOG_LEVEL.ERROR]: 'color: #F44336' // Red
   }
@@ -43,7 +45,7 @@ export class Logger {
   }
 
   private static _getStyleFromLogLevel(severity?: LOG_LEVEL) {
-    if(!severity) return generateRandomHexColor();
+    if(severity === undefined) return generateRandomHexColor();
     return Logger.logStyleMap[severity];
   }
 

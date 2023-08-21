@@ -4,7 +4,7 @@ import {CommandHandler} from "@app-core/command-bus/decorators/command-handler.d
 import {ICommandHandler} from "@app-core/command-bus/interfaces/command-handler.interface";
 
 @Injectable()
-@CommandHandler('GetUsersCommand')
+@CommandHandler('GetUserByIdCommand')
 export class GetUserByIdCommandHandler implements ICommandHandler {
 
   public handle(command: GetUserByIdCommand) {
