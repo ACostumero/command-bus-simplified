@@ -10,7 +10,4 @@ export class CommandBusModule {
       providers: [CommandBus]
     };
   }
-
-  constructor() {}
-
 }

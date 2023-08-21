@@ -3,6 +3,8 @@ import {IUser} from '@app-core/interfaces/user.interface';
 import {DialogService} from '@app-core/services/dialog.service';
 import {CreateEditUserComponent} from '../create-edit/create-edit-user/create-edit-user.component';
 import {IDynamicDialogConfig} from '@app-core/interfaces/dialog.interface';
+import {CommandBus} from '@app-core/command-bus/command-bus';
+import {GetUsersCommand} from '@app-commands/get-users.command';
 
 @Component({
   selector: 'app-users',
@@ -61,24 +63,6 @@ export class UsersComponent {
 
   constructor(private readonly _dialogService: DialogService) {}
 
-  openAddDialog2() {
-
-
-    // const dialogRef = this.dialogService.open(AddDialogComponent, {
-    //   data: {book: {} }
-    // });
-
-    // dialogRef.afterClosed().subscribe(result => {
-    //   if (result === 1) {
-
-    //     this.exampleDatabase.dataChange.value.push(this.dataService.getDialogData());
-    //     this.refreshTable();
-    //   }
-    // });
-  }
-
-
-
   public openAddDialog() {
     return this._dialogService.open({
       data: {
@@ -88,8 +72,6 @@ export class UsersComponent {
       } as IDynamicDialogConfig<CreateEditUserComponent>,
     });
   }
-
-
 
   private refreshTable() {
     console.log('refresh table');

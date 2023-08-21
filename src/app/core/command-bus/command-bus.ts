@@ -1,12 +1,11 @@
-import { Inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import {ICommand} from './interfaces/command.interface';
-import {ICommandHandler} from './interfaces/command-handler.interface';
-import {COMMAND_HANDLERS} from './tokens/command-handler.token';
 import {CommandHandlerNotRegistered} from './errors/command-handler-not-registered.error';
+import {CommandHandlerRegistryService} from './services/command-handler-registry.service';
 
 @Injectable()
 export class CommandBus {
-  constructor(@Inject(COMMAND_HANDLERS) private handlers: Map<string, ICommandHandler>) {
+  constructor(private readonly commandHandlerRegistryService: CommandHandlerRegistryService) {
 
   }
 
@@ -18,7 +17,10 @@ export class CommandBus {
   }
 
   public getHandler(commandName: string) {
-    return this.handlers.get(commandName);
+    return this.commandHandlerRegistryService.getHandler(commandName);
   }
 
+  public printHandlers() {
+    this.commandHandlerRegistryService.printHandlers();
+  }
 }

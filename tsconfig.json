@@ -24,6 +24,8 @@
     ],
     "paths": {
       "@app-assets/*": ["src/app/assets/*"],
+      "@app-commands/*": ["src/app/commands/*"],
+      "@app-command-handlers/*": ["src/app/command-handlers/*"],
       "@app-core/*": ["src/app/core/*"],
       "@app-modules/*": ["src/app/modules/*"],
       "@app-layout/*": ["src/app/layout/*"],
