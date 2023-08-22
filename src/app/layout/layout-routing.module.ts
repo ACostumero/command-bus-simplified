@@ -8,7 +8,7 @@ const routes: Routes = [
     component: LayoutComponent,
     children: [
       { path: 'users', loadChildren: () => import('../modules/users/users.module').then(m => m.UsersModule)},
-      { path: 'colors', loadChildren: () => import('../modules/color-resources/color-resources.module').then(m => m.ColorResourcesModule)},
+      { path: 'color-resources', loadChildren: () => import('../modules/color-resources/color-resources.module').then(m => m.ColorResourcesModule)},
       { path: '**', redirectTo: 'users'},
     ]
   },

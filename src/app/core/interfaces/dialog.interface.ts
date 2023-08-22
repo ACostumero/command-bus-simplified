@@ -11,7 +11,7 @@ export interface IDialogAction {
   label: string;
   isDisabled?: boolean;
   checkDisabled?: boolean;
-  color: 'primary' | 'accent' | 'warn';
+  color?: 'primary' | 'accent' | 'warn';
   isCancelButton?: boolean;
   isCloseButton?: boolean;
   callback?: keyof Dialogable<unknown>

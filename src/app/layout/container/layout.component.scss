@@ -6,23 +6,30 @@ $header-height: 48px;
   display: flex;
   flex-flow: row wrap;
   height: 100vh;
-
+  background: palevioletred;
+  overflow: hidden;
   &__header {
     flex: 0 1 100%;
     height: $header-height;
   }
 
-  &__nav {
-    flex: 0 1 60px;
-    height: calc(100vh - 48px);
-  }
+  &__sidenav {
+    width: 100%;
+    &--nav {
+      flex: 0 1 60px;
+      height: calc(100vh - $header-height);
+    }
 
-  &__main {
-    flex: 1 0 auto;
-    // Calculate height: (ViewportHeight - footerHeight - (verticalPadding))
-    height: calc(100vh - $header-height); // TODO: Create variables
-    overflow: auto;
-    padding: 24px; // TODO: Modify padding on mobile layouts
+    &--content {
+      height: calc(100vh - $header-height);
+      overflow: auto;
+
+      &__main {
+        flex: 1 0 auto;
+        padding: 24px; // TODO: Modify padding on mobile layouts
+      }
+    }
+
   }
 
   &__aside {

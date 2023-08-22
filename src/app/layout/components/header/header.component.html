@@ -1,16 +1,16 @@
 <div class="header">
   <mat-toolbar class="header__toolbar" color="primary">
     <button mat-icon-button>
-      <mat-icon>menu</mat-icon>
+      <mat-icon class="material-symbols-outlined">menu</mat-icon>
     </button>
     <span>{{ appSettings.name }}</span>
     <span class="header__toolbar--spacer"></span>
     <button mat-icon-button>
       <mat-icon svgIcon="github"></mat-icon>
     </button>
-    <button mat-button>
-      <mat-icon>code</mat-icon>
+    <div class="header__toolbar--version">
+      <span class="material-symbols-outlined">developer_guide</span>
       <span class="mat-caption"> {{ appSettings.version }}</span>
-    </button>
+    </div>
   </mat-toolbar>
 </div>

@@ -25,11 +25,6 @@ export class DialogService {
 
   public static readonly DEFAULT_ACTIONS: IDialogAction[] = [
     {
-      label: 'Cancel',
-      color: 'primary',
-      isCancelButton: true,
-    },
-    {
       label: 'Accept',
       color: 'accent',
       isCloseButton: true,

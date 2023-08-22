@@ -1,7 +1,7 @@
 @use '@angular/material' as mat;
 
-$my-primary: mat.define-palette(mat.$blue-grey-palette, 500);
-$my-accent: mat.define-palette(mat.$lime-palette, A200, A100, A400);
+$my-primary: mat.define-palette(mat.$cyan-palette, 700);
+$my-accent: mat.define-palette(mat.$amber-palette);
 
 // The "warn" palette is optional and defaults to red if not specified.
 $my-warn: mat.define-palette(mat.$pink-palette);

@@ -10,6 +10,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import {IconModule} from './icon.module';
 import {HttpClientModule} from '@angular/common/http';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
+
 const modules = [
   MatToolbarModule,
   MatButtonModule,
@@ -23,6 +26,8 @@ const modules = [
   IconModule,
   HttpClientModule,
   MatDialogModule,
+  MatSidenavModule,
+  MatListModule,
 ]
 
 @NgModule({

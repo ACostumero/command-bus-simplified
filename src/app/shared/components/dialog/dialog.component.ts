@@ -47,7 +47,7 @@ export class DialogComponent implements AfterViewInit {
   public processAction(action: IDialogAction) {
     if(action.isCancelButton) return this.dialog.close();
     const actionResult = this._executeCallback(action.callback);
-    this._checkClose(action.isCloseButton, actionResult);
+    this._checkClose(actionResult, action.isCloseButton);
   }
 
   public checkDisabled(action: IDialogAction): boolean {
@@ -86,7 +86,7 @@ export class DialogComponent implements AfterViewInit {
     }
   }
 
-  private _checkClose(isCloseButton: boolean = false, result: unknown) {
+  private _checkClose(result: unknown, isCloseButton: boolean = false) {
     if (!isCloseButton) return;
     this.dialog.close(result);
   }

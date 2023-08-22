@@ -1,0 +1,10 @@
+button.mat-mdc-button-base {
+  &:not(.mat-mdc-icon-button) {
+    .material-symbols-outlined {
+      font-size: 24px;
+      height: unset;
+    }
+  }
+}
+
+

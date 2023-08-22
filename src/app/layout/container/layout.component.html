@@ -1,13 +1,17 @@
 <div class="layout">
-  <!-- <nav class="layout__nav">
-    <app-nav-bar></app-nav-bar>
-  </nav> -->
   <header class="layout__header">
     <app-header></app-header>
   </header>
-
-  <main class="layout__main">
-    <router-outlet></router-outlet>
-  </main>
-
+  <mat-drawer-container class="layout__sidenav">
+    <mat-drawer mode="side" opened="true">
+      <nav class="layout__sidenav--nav">
+        <app-nav-bar></app-nav-bar>
+      </nav>
+    </mat-drawer>
+    <mat-drawer-content class="layout__sidenav--content">
+      <main class="layout__sidenav--content__main">
+        <router-outlet></router-outlet>
+      </main>
+    </mat-drawer-content>
+  </mat-drawer-container>
 </div>

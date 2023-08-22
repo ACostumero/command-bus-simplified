@@ -1,12 +1,13 @@
-<div class="users mat-elevation-z8">
-  <div>
-    <mat-form-field floatPlaceholder="never" color="accent">
-      <input matInput #filter placeholder="Search for users">
-      <mat-icon matSuffix color="accent">search</mat-icon>
+<div class="users">
+  <div class="users__search">
+    <mat-form-field appearance="outline" color="accent">
+      <mat-label>Search for users</mat-label>
+      <input matInput #filter>
+      <mat-icon matSuffix color="accent" class="material-symbols-outlined">search</mat-icon>
     </mat-form-field>
   </div>
 
-  <mat-table [dataSource]="dataSource">
+  <mat-table class="mat-elevation-z8" [dataSource]="dataSource">
     <!-- User name Definition -->
     <ng-container matColumnDef="id">
      <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
@@ -33,18 +34,18 @@
    <ng-container matColumnDef="actions">
     <mat-header-cell *matHeaderCellDef>
       <button mat-flat-button color="primary" (click)="openAddDialog()">
-        <mat-icon>add</mat-icon>
+        <mat-icon class="material-symbols-outlined">add</mat-icon>
         <span>Add</span>
       </button>
     </mat-header-cell>
 
     <mat-cell *matCellDef="let row; let i=index;">
       <button mat-icon-button color="accent" (click)="startEdit(row)">
-        <mat-icon aria-label="Edit">edit</mat-icon>
+        <mat-icon aria-label="Edit" class="material-symbols-outlined">edit</mat-icon>
       </button>
 
       <button mat-icon-button color="warn" (click)="deleteItem(row)">
-        <mat-icon aria-label="Delete">delete_outlined</mat-icon>
+        <mat-icon aria-label="Delete" class="material-symbols-outlined">delete_outlined</mat-icon>
       </button>
     </mat-cell>
   </ng-container>

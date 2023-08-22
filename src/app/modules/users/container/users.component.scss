@@ -4,4 +4,9 @@ $block: 'users';
   display: flex;
   flex-direction: column;
   height: 100%;
+
+  &__search {
+    display: flex;
+    justify-content: flex-end;
+  }
 }
