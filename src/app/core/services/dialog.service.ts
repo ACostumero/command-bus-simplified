@@ -14,6 +14,18 @@ import {DialogComponent} from '@app-shared/components/dialog/dialog.component';
 export class DialogService {
   constructor(private readonly _dialog: MatDialog) {}
 
+  public static readonly SAVE_ACTION: IDialogAction = {
+    label: 'Save',
+    color: 'accent',
+    isCloseButton: true,
+  };
+
+  public static readonly YES_ACTION: IDialogAction = {
+    label: 'Yes',
+    color: 'accent',
+    isCloseButton: true,
+  };
+
   private static readonly DIALOG_DEFAULT_WIDTH = '512px';
   private readonly _defaultConfig: MatDialogConfig = {
     autoFocus: false,
@@ -24,11 +36,7 @@ export class DialogService {
   };
 
   public static readonly DEFAULT_ACTIONS: IDialogAction[] = [
-    {
-      label: 'Accept',
-      color: 'accent',
-      isCloseButton: true,
-    },
+    DialogService.SAVE_ACTION
   ];
 
   public open(config: MatDialogConfig): MatDialogRef<any> {

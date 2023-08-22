@@ -33,18 +33,18 @@
 
    <ng-container matColumnDef="actions">
     <mat-header-cell *matHeaderCellDef>
-      <button mat-flat-button color="primary" (click)="openAddDialog()">
+      <button mat-flat-button color="primary" (click)="create()">
         <mat-icon class="material-symbols-outlined">add</mat-icon>
         <span>Add</span>
       </button>
     </mat-header-cell>
 
     <mat-cell *matCellDef="let row; let i=index;">
-      <button mat-icon-button color="accent" (click)="startEdit(row)">
+      <button mat-icon-button color="accent" (click)="edit(row)">
         <mat-icon aria-label="Edit" class="material-symbols-outlined">edit</mat-icon>
       </button>
 
-      <button mat-icon-button color="warn" (click)="deleteItem(row)">
+      <button mat-icon-button color="warn" (click)="delete(row)">
         <mat-icon aria-label="Delete" class="material-symbols-outlined">delete_outlined</mat-icon>
       </button>
     </mat-cell>

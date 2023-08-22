@@ -63,20 +63,20 @@ export class UsersComponent {
 
   constructor(private readonly _dialogService: DialogService) {}
 
-  public openAddDialog() {
+  public create() {
     return this._dialogService.open({
       data: {
-        title: 'Crear usuario',
+        title: 'Create user',
         contentComponent: CreateEditUserComponent,
         actions: DialogService.DEFAULT_ACTIONS,
       } as IDynamicDialogConfig<CreateEditUserComponent>,
     });
   }
 
-  startEdit(row: unknown) {
+  edit(row: unknown) {
     return this._dialogService.open({
       data: {
-        title: 'Editar usuario',
+        title: 'Edit user',
         contentComponent: CreateEditUserComponent,
         contentComponentData: {
           user: row,
@@ -86,13 +86,13 @@ export class UsersComponent {
     });
   }
 
-  deleteItem(event: unknown) {
+  delete(event: unknown) {
     console.log('delete', event);
     return this._dialogService.open({
       data: {
-        title: 'Eliminar usuario',
-        detail: 'Esta acción es irreversible. ¿Desea continuar?',
-        actions: DialogService.DEFAULT_ACTIONS,
+        title: 'Delete user',
+        detail: 'This action cannot be undone, do you want to continue?',
+        actions: [DialogService.YES_ACTION],
       } as IDynamicDialogConfig<CreateEditUserComponent>,
     });
   }
