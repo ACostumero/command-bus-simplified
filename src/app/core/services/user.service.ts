@@ -14,7 +14,7 @@ export class UserService {
 
   public getAll(): Observable<IUser[]> {
     return this._apiService.get<IApiResponse<IUserApi>>(this._defaultRouteInterface).pipe(
-      map((apiResponse: IApiResponse<IUserApi>) => new UserMapper().mapMultipleFromApi(apiResponse.data))
+      map((apiResponse: IApiResponse<IUserApi>) => new UserMapper().fromApiMultiple(apiResponse.data))
     );
   }
 

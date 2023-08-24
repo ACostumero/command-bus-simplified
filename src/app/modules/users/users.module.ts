@@ -1,16 +1,20 @@
 import { NgModule, Type } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {UsersComponent} from './container/users.component';
-import {UsersRoutingModule} from './users-routing.module';
+
 import {SharedModule} from '@app-shared/shared.module';
-import { CreateEditUserComponent } from './create-edit/create-edit-user/create-edit-user.component';
-import {GetUsersCommandHandler} from '@app-command-handlers/get-users.command-handler';
-import {GetUserByIdCommandHandler} from '@app-command-handlers/get-user-by-id.command-handler';
+import {UsersRoutingModule} from './users-routing.module';
+
 import {ICommandHandler} from '@app-core/command-bus/interfaces/command-handler.interface';
+
 import {CommandHandlerRegistryService} from '@app-core/command-bus/services/command-handler-registry.service';
+import {GetUserByIdCommandHandler} from '@app-command-handlers/get-user-by-id.command-handler';
 import {CreateUserCommandHandler} from '@app-command-handlers/create-user-command-handler';
+import {GetUsersCommandHandler} from '@app-command-handlers/get-users.command-handler';
 import {EditUserCommandHandler} from '@app-command-handlers/edit-user-command-handler';
 import {DeleteUserCommandHandler} from '@app-command-handlers/delete-user-command-handler';
+
+import {UsersComponent} from '@app-modules/users/container/users.component';
+import { CreateEditUserComponent } from '@app-modules/users/components/create-edit-user/create-edit-user.component';
 
 const USERS_COMMAND_HANDLERS: Type<ICommandHandler>[] = [
   GetUsersCommandHandler,

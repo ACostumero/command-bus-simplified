@@ -9,4 +9,10 @@ $block: 'users';
     display: flex;
     justify-content: flex-end;
   }
+
+  &__no-results {
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+  }
 }
