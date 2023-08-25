@@ -1,49 +1,78 @@
-import { Injectable } from '@angular/core';
+import {Injectable, OnDestroy} from '@angular/core';
 import {ICommand} from './interfaces/command.interface';
 import {CommandHandlerNotRegistered} from './errors/command-handler-not-registered.error';
 import {CommandHandlerRegistryService} from './services/command-handler-registry.service';
-import {Observable, Subject, Subscription, concatMap, finalize, first, from, take, takeUntil, toArray} from 'rxjs';
+import {BehaviorSubject, EMPTY, Observable, Subject, Subscription, catchError, concatMap, finalize, from, takeUntil, timeout, toArray} from 'rxjs';
+import {Logger} from '@app-core/utils/logger.util';
 
 @Injectable({providedIn: 'root'})
-export class CommandBus {
+export class CommandBus implements OnDestroy {
+  /**
+   * Maximum time allowed for executing a command in milliseconds.
+   * If a command's execution time exceeds this threshold, a timeout error is triggered.
+   * This timeout helps prevent memory leaks and automatically closes the subscription
+   * if no command is received within the specified time.
+   */
+  private static readonly _COMMAND_EXECUTION_TIMEOUT = 5000;
 
+  private readonly _commandQueueSource$: BehaviorSubject<ICommand[]> = new BehaviorSubject<ICommand[]>([]);
   private readonly _destroySource$: Subject<void> = new Subject<void>();
-  private _subscription?: Subscription;
 
-  constructor(private readonly commandHandlerRegistryService: CommandHandlerRegistryService) {}
+  private _queueSubscription$?: Subscription;
 
+  constructor (private readonly commandHandlerRegistryService: CommandHandlerRegistryService) {
+    this._initializeQueue();
+  }
+
+  ngOnDestroy(): void {
+    this._destroySource$.next();
+  }
 
   public dispatch(command: ICommand): void {
-    console.log(`%c[CommandBus] Dispatching -> ${command.constructor.name}`, "color:greenyellow;");
-    // I use take(1) instead first() because first() causes "empty error sequence" when there
-    // are no elements in the input stream (when the single handler returns EMPTY, for example).
-    // take(1) closes the Observable without any elements correctly
-    this._executeHandler(command).pipe(take(1)).subscribe();
+    this._addToQueue([command]);
   }
 
   public dispatchPipeline(commands: ICommand[]): void {
-    this._subscription = from(commands).pipe(
-      takeUntil(this._destroySource$),
-      concatMap((command: ICommand) => this._executeHandler(command)),
-      finalize(() => this._destroySource$.next())
-    ).subscribe({
-      next: (e) => console.log('handler next'),
-      complete: () => console.log('handler completed', this._subscription?.closed)}
-      );
+    this._addToQueue(commands);
   }
 
   public checkSubscriptionAlive() {
-    console.log('Is subscription alive?', !this._subscription?.closed);
+    Logger.info(`Is subscription alive?' -> ${!this._queueSubscription$?.closed}`);
   }
 
-  private _getHandler(commandName: string) {
-    const handler = this.commandHandlerRegistryService.getHandler(commandName);
-    if(!handler) throw new CommandHandlerNotRegistered();
-    return handler;
+  private _initializeQueue(): void {
+    this._queueSubscription$ = this._commandQueueSource$.pipe(
+      takeUntil(this._destroySource$),
+      concatMap(commands => this._executeCommandQueue(commands)),
+      timeout(CommandBus._COMMAND_EXECUTION_TIMEOUT),
+      finalize(() => this._destroySource$.next()),
+      catchError(() => EMPTY)
+    ).subscribe();
+  }
+
+  private _addToQueue(commands: ICommand[]): void {
+    this._reinitializeQueueIfClosed();
+    this._commandQueueSource$.next(commands);
+  }
+
+  private _reinitializeQueueIfClosed() {
+    if (this._queueSubscription$?.closed) {
+      this._initializeQueue();
+    }
   }
 
   private _executeHandler(command: ICommand): Observable<unknown> {
     const handler = this._getHandler(command.constructor.name);
     return handler.handle(command);
+  }
+
+  private _getHandler(commandName: string) {
+    const handler = this.commandHandlerRegistryService.getHandler(commandName);
+    if (!handler) throw new CommandHandlerNotRegistered();
+    return handler;
+  }
+
+  private _executeCommandQueue(commands: ICommand[]): Observable<unknown> {
+    return from(commands).pipe(concatMap(command => this._executeHandler(command)), toArray());
   }
 }

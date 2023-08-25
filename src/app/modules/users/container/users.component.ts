@@ -37,8 +37,7 @@ export class UsersComponent implements OnDestroy{
   }
 
   public create() {
-    //this._usersFacade.openCreateUser();
-    this._usersFacade.checkAlive();
+    this._usersFacade.openCreateUser();
   }
 
   public edit(row: IUser) {

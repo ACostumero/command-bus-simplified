@@ -53,13 +53,12 @@ export class UsersFacade {
       });
   }
 
-  public checkAlive() {
-    //this._commandBus.checkSubscriptionAlive();
+  public resetUsers() {
     this._commandBus.dispatch(new ResetUsersCommand())
   }
 
   onDestroy() {
-    // this._commandBus.dispatch(new ResetUsersCommand());
+    this.resetUsers();
   }
 
 }

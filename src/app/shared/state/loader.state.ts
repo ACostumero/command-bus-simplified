@@ -10,12 +10,7 @@ export class LoaderState {
   }
 
   set isContentLoading(value: boolean) {
-    console.log('set content loading: ', value);
-
     this._isContentLoadingSource.next(value);
-
-    console.log('value after set: ', this._isContentLoadingSource.value);
-
   }
 
 }
