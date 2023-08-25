@@ -1,5 +1,7 @@
 import {Injectable} from "@angular/core";
 import {GetUsersCommand} from "@app-commands/get-users.command";
+import {ResetUsersCommand} from "@app-commands/reset-users.command";
+import {SetLoaderCommand} from "@app-commands/set-loader.command";
 import {CommandBus} from "@app-core/command-bus/command-bus";
 import {IUser} from "@app-core/interfaces/user.interface";
 import {DialogService} from "@app-core/services/dialog.service";
@@ -14,7 +16,11 @@ export class UsersFacade {
 
 
   public getUsers() {
-    this._commandBus.dispatch(new GetUsersCommand());
+    this._commandBus.dispatchPipeline([
+      new SetLoaderCommand(true),
+      new GetUsersCommand(),
+      new SetLoaderCommand(false)
+    ]);
   }
 
   public openCreateUser() {
@@ -47,6 +53,13 @@ export class UsersFacade {
       });
   }
 
+  public checkAlive() {
+    //this._commandBus.checkSubscriptionAlive();
+    this._commandBus.dispatch(new ResetUsersCommand())
+  }
 
+  onDestroy() {
+    // this._commandBus.dispatch(new ResetUsersCommand());
+  }
 
 }

@@ -18,12 +18,10 @@ export class GetUsersCommandHandler implements ICommandHandler {
 
   public handle(command: GetUsersCommand) {
     Logger.info('[GetUsersCommandHandler] -> handle()');
-
-    this._userService.getAll().pipe(
+    return this._userService.getAll().pipe(
       first(),
       delay(2000),
       tap((users: IUser[]) => this._usersState.users = users)
-    ).subscribe()
-
+    );
   }
 }

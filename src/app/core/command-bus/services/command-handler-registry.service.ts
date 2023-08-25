@@ -9,8 +9,10 @@ export class CommandHandlerRegistryService {
 
   registerHandlers(newCommandHandlersMap: Type<ICommandHandler>[]) {
     newCommandHandlersMap.forEach((handler: Type<ICommandHandler>) => {
-      const handlerClass = inject(handler);
       const commandName = Reflect.getMetadata(HANDLERS_METADATA_COMMAND_NAME, handler);
+      if(this.getHandler(commandName)) return;
+
+      const handlerClass = inject(handler);
       Logger.info(`[CommandHandlerRegistry] Associating command ${commandName} with handler -> ${handlerClass.constructor.name}`);
       this.handlersMap.set(commandName, handlerClass);
     });

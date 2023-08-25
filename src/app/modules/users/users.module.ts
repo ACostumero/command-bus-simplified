@@ -12,6 +12,7 @@ import {CreateUserCommandHandler} from '@app-command-handlers/create-user-comman
 import {GetUsersCommandHandler} from '@app-command-handlers/get-users.command-handler';
 import {EditUserCommandHandler} from '@app-command-handlers/edit-user-command-handler';
 import {DeleteUserCommandHandler} from '@app-command-handlers/delete-user-command-handler';
+import {ResetUsersCommandHandler} from '@app-command-handlers/reset-users.command-handler';
 
 import {UsersComponent} from '@app-modules/users/container/users.component';
 import { CreateEditUserComponent } from '@app-modules/users/components/create-edit-user/create-edit-user.component';
@@ -21,7 +22,8 @@ const USERS_COMMAND_HANDLERS: Type<ICommandHandler>[] = [
   GetUserByIdCommandHandler,
   CreateUserCommandHandler,
   EditUserCommandHandler,
-  DeleteUserCommandHandler
+  DeleteUserCommandHandler,
+  ResetUsersCommandHandler
 ];
 
 @NgModule({

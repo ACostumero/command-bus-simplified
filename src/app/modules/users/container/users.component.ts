@@ -1,7 +1,8 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
 import {IUser} from '@app-core/interfaces/user.interface';
 import {UsersFacade} from '@app-modules/users/facades/users.facade';
 import { UsersState } from '@app-modules/users/state/users.state';
+import {LoaderState} from '@app-shared/state/loader.state';
 import {Observable} from 'rxjs';
 
 
@@ -11,18 +12,24 @@ import {Observable} from 'rxjs';
   styleUrls: ['./users.component.scss'],
   providers: [UsersFacade]
 })
-export class UsersComponent {
+export class UsersComponent implements OnDestroy{
 
   @ViewChild('filter',  {static: true}) filter!: ElementRef;
   public users$: Observable<IUser[]> = this._usersState.users$;
+  public isContentLoading$: Observable<boolean> = this._loaderState.isContentLoading$;
 
   public displayedColumns = ['id', 'firstName', 'lastName', 'email',  'actions'];
 
   constructor(
     private readonly _usersFacade: UsersFacade,
     private readonly _usersState: UsersState,
+    private readonly _loaderState: LoaderState,
     ) {
     this._usersFacade.getUsers();
+  }
+
+  ngOnDestroy(): void {
+    this._usersFacade.onDestroy();
   }
 
   public getAll() {
@@ -30,7 +37,8 @@ export class UsersComponent {
   }
 
   public create() {
-    this._usersFacade.openCreateUser();
+    //this._usersFacade.openCreateUser();
+    this._usersFacade.checkAlive();
   }
 
   public edit(row: IUser) {
@@ -39,8 +47,7 @@ export class UsersComponent {
 
   public delete(event: unknown) {
     console.log('delete', event);
-    this._usersFacade.openDeleteUser();
-
+    this._usersFacade.openDeleteUser();1
   }
 
 }
