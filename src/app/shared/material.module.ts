@@ -12,6 +12,7 @@ import {IconModule} from './icon.module';
 import {HttpClientModule} from '@angular/common/http';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 const modules = [
   MatToolbarModule,
@@ -28,6 +29,7 @@ const modules = [
   MatDialogModule,
   MatSidenavModule,
   MatListModule,
+  MatProgressBarModule
 ]
 
 @NgModule({
