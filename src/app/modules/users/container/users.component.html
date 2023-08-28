@@ -8,7 +8,7 @@
     </mat-form-field>
   </div>
   <div class="users__table" *ngIf="users$ | async as users">
-    <mat-table class="mat-elevation-z8" [dataSource]="users">
+    <mat-table class="mat-elevation-z6" [dataSource]="users">
       <!-- User name Definition -->
       <ng-container matColumnDef="id">
        <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>

@@ -1,6 +1,6 @@
 <div class="header">
   <mat-toolbar class="header__toolbar" color="primary">
-    <button mat-icon-button>
+    <button mat-icon-button (click)="toggleDrawer()">
       <mat-icon class="material-symbols-outlined">menu</mat-icon>
     </button>
     <span>{{ appSettings.name }}</span>
