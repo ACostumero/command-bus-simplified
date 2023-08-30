@@ -1,19 +1,17 @@
 @use '@angular/material' as mat;
 
-$my-primary: mat.define-palette(mat.$cyan-palette, 700);
-$my-accent: mat.define-palette(mat.$amber-palette);
+$palette-primary: mat.define-palette(mat.$cyan-palette, 700);
+$palette-accent: mat.define-palette(mat.$amber-palette);
+$palette-warn: mat.define-palette(mat.$pink-palette);
 
-// The "warn" palette is optional and defaults to red if not specified.
-$my-warn: mat.define-palette(mat.$pink-palette);
-
-$my-theme: mat.define-dark-theme((
+$theme: mat.define-dark-theme((
  color: (
-   primary: $my-primary,
-   accent: $my-accent,
-   warn: $my-warn,
+   primary: $palette-primary,
+   accent: $palette-accent,
+   warn: $palette-warn,
  ),
  typography: mat.define-typography-config(),
  density: 0,
 ));
 
-@include mat.all-component-themes($my-theme);
+@include mat.all-component-themes($theme);

@@ -1,0 +1,34 @@
+@use 'base/palettes';
+@use '@angular/material' as mat;
+
+@function getPrimaryColor($hue: 500) {
+  @return getColor(palettes.$palette-primary, $hue);
+}
+
+@function getPrimaryTextColor($hue: 500) {
+  @return getTextColor(palettes.$palette-primary, $hue);
+}
+
+@function getAccentColor($hue: 500) {
+  @return getColor(palettes.$palette-accent, $hue);
+}
+
+@function getAccentTextColor($hue: 500) {
+  @return getTextColor(palettes.$palette-accent, $hue);
+}
+
+@function getWarnColor($hue: 500) {
+  @return getColor(palettes.$palette-warn, $hue);
+}
+
+@function getWarnTextColor($hue: 500) {
+  @return getTextColor(palettes.$palette-warn, $hue);
+}
+
+@function getColor($palette: palettes.$palette-primary, $hue: 500) {
+  @return mat.get-color-from-palette($palette, $hue);
+}
+
+@function getTextColor($palette: palettes.$palette-primary, $hue: 500) {
+  @return mat.get-color-from-palette($palette, $hue + '-contrast');
+}
