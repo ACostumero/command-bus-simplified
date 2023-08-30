@@ -2,7 +2,7 @@ import {Injectable, OnDestroy} from '@angular/core';
 import {ICommand} from './interfaces/command.interface';
 import {CommandHandlerNotRegistered} from './errors/command-handler-not-registered.error';
 import {CommandHandlerRegistryService} from './services/command-handler-registry.service';
-import {BehaviorSubject, EMPTY, Observable, Subject, Subscription, catchError, concatMap, finalize, from, takeUntil, timeout, toArray} from 'rxjs';
+import {BehaviorSubject, EMPTY, Observable, Subject, Subscription, TimeoutError, catchError, concatMap, finalize, from, of, takeUntil, tap, throwError, timeout, toArray} from 'rxjs';
 import {Logger} from '@app-core/utils/logger.util';
 
 @Injectable({providedIn: 'root'})
@@ -46,7 +46,12 @@ export class CommandBus implements OnDestroy {
       concatMap(commands => this._executeCommandQueue(commands)),
       timeout(CommandBus._COMMAND_EXECUTION_TIMEOUT),
       finalize(() => this._destroySource$.next()),
-      catchError(() => EMPTY)
+      catchError((e: unknown) => {
+        if(e instanceof TimeoutError) {
+          return EMPTY;
+        }
+        return throwError(() => e);
+      })
     ).subscribe();
   }
 
@@ -73,6 +78,8 @@ export class CommandBus implements OnDestroy {
   }
 
   private _executeCommandQueue(commands: ICommand[]): Observable<unknown> {
-    return from(commands).pipe(concatMap(command => this._executeHandler(command)), toArray());
+    return from(commands).pipe(
+      concatMap(command => this._executeHandler(command)),
+      toArray());
   }
 }

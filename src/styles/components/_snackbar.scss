@@ -1,0 +1,8 @@
+@use 'abstracts/functions';
+.mat-mdc-snack-bar-container {
+  &.warn-snackbar {
+    --mdc-snackbar-container-color: #{functions.getWarnColor()};
+    --mdc-snackbar-supporting-text-color: #{functions.getWarnTextColor()};
+    --mat-mdc-snack-bar-button-color: #{functions.getWarnTextColor()};
+  }
+}
