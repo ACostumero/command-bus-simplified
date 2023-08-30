@@ -3,7 +3,7 @@ import {IUser} from '@app-core/interfaces/user.interface';
 import {UsersFacade} from '@app-modules/users/facades/users.facade';
 import { UsersState } from '@app-modules/users/state/users.state';
 import {LoaderState} from '@app-shared/state/loader.state';
-import {Observable} from 'rxjs';
+import {Observable, catchError, of, tap, throwError} from 'rxjs';
 
 
 @Component({

@@ -51,11 +51,8 @@ get controls() { return this.userForm.controls; }
   onSubmit() {
     if (this.userForm.valid) {
       const userData: TCreateEditUser = this.userForm.getRawValue();
-      // Here, you can handle the user creation or update logic
       console.log('Submitted User Data:', userData);
       this.resetForm();
-    } else {
-      // Handle form validation errors
     }
   }
 
