@@ -5,12 +5,11 @@
     </button>
     <span>{{ appSettings.name }}</span>
     <span class="header__toolbar--spacer"></span>
-    <button mat-icon-button>
+    <button mat-icon-button  (click)="goToGitHubRepo()">
       <mat-icon svgIcon="github"></mat-icon>
     </button>
-    <div class="header__toolbar--version">
-      <span class="material-symbols-outlined">developer_guide</span>
-      <span class="mat-caption"> {{ appSettings.version }}</span>
-    </div>
+    <button mat-icon-button (click)="checkCommandBusAlive()">
+      <mat-icon class="material-symbols-outlined">vital_signs</mat-icon>
+    </button>
   </mat-toolbar>
 </div>

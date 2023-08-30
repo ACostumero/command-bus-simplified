@@ -5,13 +5,5 @@ $block: 'header';
     &--spacer {
       flex: 1 1 auto;
     }
-
-    &--version {
-      cursor: default;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-
   }
 }

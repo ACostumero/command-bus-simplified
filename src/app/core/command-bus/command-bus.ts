@@ -37,7 +37,7 @@ export class CommandBus implements OnDestroy {
   }
 
   public checkSubscriptionAlive() {
-    Logger.info(`Is subscription alive?' -> ${!this._queueSubscription$?.closed}`);
+    Logger.debug(`Is subscription alive?' -> ${!this._queueSubscription$?.closed}`);
   }
 
   private _initializeQueue(): void {
