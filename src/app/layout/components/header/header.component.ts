@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {SetLoaderCommand} from '@app-commands/set-loader.command';
 import {CommandBus} from '@app-core/command-bus/command-bus';
 import {REPOSITORY_URL} from '@app-core/constants/env.const';
 import {IAppSettings} from '@app-core/interfaces/app-settings.interface';
@@ -32,6 +33,10 @@ export class HeaderComponent {
 
   public checkCommandBusAlive() {
     this._commandBus.checkSubscriptionAlive();
+  }
+
+  public testBus() {
+    this._commandBus.dispatch(new SetLoaderCommand(true));
   }
 
 }

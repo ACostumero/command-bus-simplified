@@ -37,7 +37,7 @@ export class CommandBus implements OnDestroy {
   }
 
   public checkSubscriptionAlive() {
-    Logger.debug(`Is subscription alive?' -> ${!this._queueSubscription$?.closed}`);
+    Logger.debug(`Is subscription alive? -> ${!this._queueSubscription$?.closed}`);
   }
 
   private _initializeQueue(): void {
@@ -45,14 +45,19 @@ export class CommandBus implements OnDestroy {
       takeUntil(this._destroySource$),
       concatMap(commands => this._executeCommandQueue(commands)),
       timeout(CommandBus._COMMAND_EXECUTION_TIMEOUT),
-      finalize(() => this._destroySource$.next()),
       catchError((e: unknown) => {
         if(e instanceof TimeoutError) {
           return EMPTY;
         }
         return throwError(() => e);
-      })
+      }),
+      finalize(() => this._destroyQueue()),
     ).subscribe();
+  }
+
+  private _destroyQueue() {
+    this._destroySource$.next();
+    this._commandQueueSource$.next([]);
   }
 
   private _addToQueue(commands: ICommand[]): void {
