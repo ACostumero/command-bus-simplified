@@ -6,4 +6,4 @@ export interface IUser {
   avatar: string;
 }
 
-export type TCreateEditUser = Omit<IUser, 'id'>;
+export type TUserWithoutId = Omit<IUser, 'id'>;

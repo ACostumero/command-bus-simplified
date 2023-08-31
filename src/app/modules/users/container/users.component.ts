@@ -37,16 +37,16 @@ export class UsersComponent implements OnDestroy{
   }
 
   public create() {
-    this._usersFacade.openCreateUser();
+    this._usersFacade.openCreateUserDialog();
   }
 
   public edit(row: IUser) {
-    this._usersFacade.openEditUser(row);
+    this._usersFacade.editUser(row);
   }
 
-  public delete(event: unknown) {
-    console.log('delete', event);
-    this._usersFacade.openDeleteUser();1
+  public delete(user: IUser) {
+    console.log('delete', user);
+    this._usersFacade.deleteUser(user.id);
   }
 
 }

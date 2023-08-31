@@ -18,6 +18,8 @@ export class DialogService {
     label: 'Save',
     color: 'accent',
     isCloseButton: true,
+    checkDisabled: true,
+    callback:'onDialogClose'
   };
 
   public static readonly YES_ACTION: IDialogAction = {

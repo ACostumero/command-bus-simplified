@@ -1,5 +1,5 @@
 <div class="create-edit-user">
-  <form class="create-edit-user__form" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <form class="create-edit-user__form" [formGroup]="userForm" (ngSubmit)="onDialogClose()">
     <mat-form-field>
       <mat-label>Email</mat-label>
       <input matInput type="email" formControlName="email" placeholder="Email">
