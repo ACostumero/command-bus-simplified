@@ -5,3 +5,11 @@ export interface IUserApi {
   last_name: string;
   avatar: string;
 }
+
+export interface IUserUpdateApi {
+  id: number;
+  email: string;
+  firstName: string;
+  lastName: string;
+  avatar: string;
+}

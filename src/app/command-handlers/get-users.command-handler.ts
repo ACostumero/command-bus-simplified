@@ -20,8 +20,8 @@ export class GetUsersCommandHandler implements ICommandHandler {
     Logger.info('[GetUsersCommandHandler] -> handle()');
     return this._userService.getAll().pipe(
       first(),
-      delay(2000),
-      tap((users: IUser[]) => this._usersState.users = users)
+      delay(500), // For loader testing purposes only
+      tap((users: IUser[]) => this._usersState.setUsers(users))
     );
   }
 }

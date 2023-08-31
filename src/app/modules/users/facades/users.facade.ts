@@ -51,7 +51,7 @@ export class UsersFacade {
     this.openEditUserDialog(user).pipe(
       first(),
       filter(Boolean),
-      tap(() => this._commandBus.dispatch(new EditUserCommand(user)))
+      tap((userChanges: IUser) => this._commandBus.dispatch(new EditUserCommand(userChanges)))
     ).subscribe()
   }
 

@@ -27,6 +27,7 @@
       "@app-commands/*": ["src/app/commands/*"],
       "@app-command-handlers/*": ["src/app/command-handlers/*"],
       "@app-core/*": ["src/app/core/*"],
+      "@app-data/*": ["src/app/data/*"],
       "@app-modules/*": ["src/app/modules/*"],
       "@app-layout/*": ["src/app/layout/*"],
       "@app-shared/*": [

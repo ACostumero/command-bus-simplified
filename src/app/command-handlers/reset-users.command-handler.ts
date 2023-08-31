@@ -14,7 +14,7 @@ export class ResetUsersCommandHandler implements ICommandHandler {
 
   public handle(command: ResetUsersCommand) {
     Logger.info('[ResetUsersCommandHandler] -> handle()');
-    this._usersState.users = [];
+    this._usersState.setUsers([]);
     return EMPTY;
   }
 }
