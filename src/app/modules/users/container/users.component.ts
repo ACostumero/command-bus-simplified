@@ -18,7 +18,7 @@ export class UsersComponent implements OnDestroy{
   public users$: Observable<IUser[]> = this._usersState.users$;
   public isContentLoading$: Observable<boolean> = this._loaderState.isContentLoading$;
 
-  public displayedColumns = ['id', 'firstName', 'lastName', 'email',  'actions'];
+  public displayedColumns = ['id', 'avatar', 'firstName', 'lastName', 'email',  'actions'];
 
   constructor(
     private readonly _usersFacade: UsersFacade,
