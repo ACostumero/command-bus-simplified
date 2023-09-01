@@ -1,3 +1,5 @@
+@use '@angular/material' as mat;
+
 $font-family-heavy: 'neue-helvetica-bq-heavy';
 $font-family-bold: 'neue-helvetica-bq-bold';
 $font-family-regular : 'neue-helvetica-bq-medium';
@@ -23,9 +25,18 @@ $font-family-light : 'neue-helvetica-bq-light';
   src: url('~src/assets/fonts/NeueHelveticaBQLight.otf');
 }
 
-h1 {
-  font-family: $font-family-bold;
-}
+$typography-config: mat.define-typography-config(
+  $font-family: $font-family-regular,
+  $headline-5: mat.define-typography-level(24px, 32px, 400, $font-family: $font-family-bold), // h1
+  $headline-6: mat.define-typography-level(20px, 32px, 500, $font-family: $font-family-bold), // h2
+  $subtitle-1: mat.define-typography-level(16px, 28px, 400, $font-family: $font-family-bold), // h3
+  $subtitle-2: mat.define-typography-level(16px, 24px, 400, $font-family: $font-family-bold), // h4
+  $body-1: mat.define-typography-level(14px, 20px, 400, $font-family: $font-family-regular), // normal  text
+  $body-2: mat.define-typography-level(14px, 22px, 500, $font-family: $font-family-regular), // bold text
+  $caption: mat.define-typography-level(12px, 20px, 400, $font-family: $font-family-light),
+  $button: mat.define-typography-level(14px, 20px, 500, $font-family: $font-family-regular),
+);
+
 
 .font-heavy {
   font-family: $font-family-heavy;
