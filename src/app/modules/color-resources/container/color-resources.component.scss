@@ -4,10 +4,6 @@ $block: 'color-resources';
   display: flex;
   flex-direction: column;
 
-  &__title {
-    color: white;
-  }
-
   &__content {
     display: grid;
     grid-template-columns: repeat(auto-fill, 200px);

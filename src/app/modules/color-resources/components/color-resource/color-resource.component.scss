@@ -1,3 +1,5 @@
+@use 'base/typography';
+
 $block: 'color-resource';
 
 .#{$block} {
@@ -23,6 +25,10 @@ $block: 'color-resource';
       align-items: center;
       gap: 2px;
       color: white;
+
+      h2,h3 {
+        margin: 0;
+      }
     }
   }
 
@@ -33,7 +39,13 @@ $block: 'color-resource';
     width: 100%;
     gap: 2px;
 
-    &--pantone-reg {
+    &--brand {
+      color: #000;
+      font-family: typography.$font-family-heavy;
+      margin: 0
+    }
+
+    &--brand-reg {
       font-size: 12px;
       margin-left: 2px;
     }
@@ -42,11 +54,13 @@ $block: 'color-resource';
       font-weight: 400;
       color: #000;
       text-transform: capitalize;
+      margin: 0
     }
 
     &--pantone-value {
-      font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+      //font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
       font-size: 0.9em;
+      margin: 0;
       color: #000;
     }
 
