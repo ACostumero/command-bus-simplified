@@ -17,7 +17,6 @@ help: ## Displays this information.
 up: ## Starts the container and serves the app for development.
 	@COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose \
 				-f "docker-compose.yml" \
-    		-f "docker-compose-dev.yml" \
     		up --build -d
 		@echo ""
 		@echo "#####################################"
@@ -26,25 +25,10 @@ up: ## Starts the container and serves the app for development.
 		@echo "You can use $(COLOR_BLUE)make logs$(COLOR_END) for app status tracking"
 		@echo ""
 
-.PHONY: build
-build: ## Starts the container and builds the app.
-	@COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose \
-		-f "docker-compose.yml" \
-		-f "docker-compose-prod.yml" \
-		up --build -d
-		@echo ""
-		@echo "####################################"
-		@echo "##  Service built successfully  ##"
-		@echo "####################################"
-		@echo "You can use $(COLOR_BLUE)make logs$(COLOR_END) for app status tracking"
-		@echo ""
-
 .PHONY: down
 down: ## Stops and deletes the container.
 	@docker-compose \
 	-f "docker-compose.yml" \
-	-f "docker-compose-dev.yml" \
-	-f "docker-compose-prod.yml" \
 	down -v
 
 .PHONY: logs
@@ -59,3 +43,7 @@ restart: down build logs ## Stops the container and restarts it.
 .PHONY: stop
 stop: ## Stops the container, but does not remove it.
 	@docker-compose -f "docker-compose.yml" stop
+
+.PHONY: clean-cache
+clean-cache: ## Cleans npm cache
+	@npm cache clean --force
