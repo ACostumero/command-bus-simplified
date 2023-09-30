@@ -7,6 +7,7 @@ import {SharedModule} from '@app-shared/shared.module';
 import { LayoutComponent } from '@app-layout/container/layout.component';
 import {LayoutRoutingModule} from './layout-routing.module';
 import { DrawerComponent } from './components/drawer/drawer.component';
+import { UserMenuComponent } from './components/user-menu/user-menu.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { DrawerComponent } from './components/drawer/drawer.component';
     FooterComponent,
     HeaderComponent,
     NavBarComponent,
-    DrawerComponent
+    DrawerComponent,
+    UserMenuComponent
   ],
   imports: [
     CommonModule,

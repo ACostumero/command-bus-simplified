@@ -1,5 +1,5 @@
 // Core
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 
 // Services
 import { DrawerService } from '@app-core/services/drawer.service';
@@ -8,6 +8,7 @@ import { DrawerService } from '@app-core/services/drawer.service';
 import { DRAWER_WIDTH } from '@app-core/enums/drawer-width.enum';
 import { TDrawer } from '@app-core/interfaces/drawer-service.interface';
 import { ColorResourcesComponent } from '@app-modules/color-resources/container/color-resources.component';
+import { MatMenu } from '@angular/material/menu';
 
 // Components
 

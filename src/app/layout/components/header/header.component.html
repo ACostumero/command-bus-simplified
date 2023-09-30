@@ -7,13 +7,12 @@
 			<mat-icon fontSet="material-symbols-outlined">layers_clear</mat-icon>
 		</button>
 		<button mat-icon-button
-						[matMenuTriggerFor]="appUserMenu">
+						[matMenuTriggerFor]="appMenu.menu">
 			<mat-icon fontSet="material-symbols-rounded">manage_accounts</mat-icon>
 		</button>
 	</mat-toolbar>
 </div>
+<app-user-menu #appMenu></app-user-menu>
 
-<mat-menu #appUserMenu="matMenu">
-	<button mat-menu-item
-					(click)="onClickLogout()">Logout</button>
-</mat-menu>
+
+
