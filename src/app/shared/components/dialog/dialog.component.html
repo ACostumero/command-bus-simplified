@@ -8,7 +8,7 @@
     class="dialog-base__header--close-button mat-icon-button"
     mat-dialog-close
   >
-    <mat-icon class="material-symbols-outlined">close</mat-icon>
+    <mat-icon fontSet="material-symbols-outlined">close</mat-icon>
   </button>
 </div>
 
@@ -27,7 +27,7 @@
       [disabled]="checkDisabled(action)"
       (click)="processAction(action)"
     >
-      <mat-icon *ngIf="action.isCloseButton" class="material-symbols-outlined"
+      <mat-icon *ngIf="action.isCloseButton" fontSet="material-symbols-outlined"
         >done</mat-icon
       >
       <span>{{ action.label }}</span>
@@ -39,7 +39,7 @@
       [disabled]="checkDisabled(action)"
       (click)="processAction(action)"
     >
-      <mat-icon class="material-symbols-outlined">close</mat-icon>
+      <mat-icon fontSet="material-symbols-outlined">close</mat-icon>
       <span>{{ action.label }}</span>
     </button>
   </ng-container>

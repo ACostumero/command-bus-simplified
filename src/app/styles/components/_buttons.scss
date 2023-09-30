@@ -1,0 +1,20 @@
+@use "colors/colors";
+@use "functions/color-utils";
+
+
+
+button.mat-mdc-button-base {
+  height: 40px;
+  border-radius: 24px;
+  &:not(.mat-mdc-icon-button) {
+    mat-icon.mat-icon {
+      margin-right: 8px;
+    }
+  }
+  &.mat-accent {
+    &:not(.mat-mdc-outlined-button, .mat-mdc-icon-button) {
+      // Currently exists a bug that not resolve correctly the contrast color in buttons
+      color: color-utils.get-accent-text-color();
+    }
+  }
+}

@@ -1,0 +1,53 @@
+@use '@angular/material' as mat;
+@use "functions/color-utils";
+@use "palettes";
+@use 'typography';
+@use 'foreground';
+@use 'background';
+
+// Define the theme from '_functions.scss' passing it the previous-created palettes
+$app-theme: mat.define-light-theme((
+  color: (
+    primary: palettes.$palette-primary,
+    accent: palettes.$palette-accent,
+    warn: palettes.$palette-warn
+  ),
+  typography: typography.$roboto-typo-config,
+  density: 0,
+));
+
+// Apply the theme to ALL application components
+@include mat.all-component-themes($app-theme);
+
+/* Theme main colors */
+:root {
+  // Palette primary main color using hsl
+  --primary-color-hue: 0;
+  --primary-color-saturation: 0%;
+  --primary-color-lightness: 62%;
+  --primary-color: var(--primary-color-hue), var(--primary-color-saturation), var(--primary-color-lightness);
+  --primary-color-rgb: rgba(var(--primary-color),1);
+  --primary-text-color:#{color-utils.get-primary-text-color(500)};
+
+  // Palette accent main color using hsl
+  --accent-color-hue: 197;
+  --accent-color-saturation: 77%;
+  --accent-color-lightness: 45%;
+  --accent-color: var(--accent-color-hue), var(--accent-color-saturation), var(--accent-color-lightness);
+
+  --accent-color-rgb: rgba(var(--accent-color),1);
+  --accent-text-color: #{color-utils.get-accent-text-color(500)};
+  --accent-color-10: rgba(var(--accent-color), 0.1);
+
+  // Error color using hsl
+  --color-error-hue: 0;
+  --color-error-saturation: 70%;
+  --color-error-lightness: 35%;
+  --color-error: var(--color-error-hue), var(--color-error-saturation), var(--color-error-lightness);
+
+  // Success color using hsl
+  --color-success-hue: 143;
+  --color-success-saturation: 64%;
+  --color-success-lightness: 24%;
+  --color-success: var(--color-success-hue), var(--color-success-saturation), var(--color-success-lightness);
+}

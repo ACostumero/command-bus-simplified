@@ -1,18 +1,19 @@
 <div class="header">
-  <mat-toolbar class="header__toolbar" color="primary">
-    <button mat-icon-button (click)="toggleDrawer()">
-      <mat-icon class="material-symbols-outlined">menu</mat-icon>
-    </button>
-    <span>{{ appSettings.name }}</span>
-    <span class="header__toolbar--spacer"></span>
-    <button mat-icon-button  (click)="goToGitHubRepo()">
-      <mat-icon svgIcon="github"></mat-icon>
-    </button>
-    <button mat-icon-button (click)="testBus()">
-      <mat-icon class="material-symbols-outlined">lab_research</mat-icon>
-    </button>
-    <button mat-icon-button (click)="checkCommandBusAlive()">
-      <mat-icon class="material-symbols-outlined">vital_signs</mat-icon>
-    </button>
-  </mat-toolbar>
+	<mat-toolbar class="header__toolbar">
+		<span>Command Bus Simplified</span>
+		<span class="header__toolbar--spacer"></span>
+		<button mat-icon-button
+						(click)="openExampleDrawer()">
+			<mat-icon fontSet="material-symbols-outlined">layers_clear</mat-icon>
+		</button>
+		<button mat-icon-button
+						[matMenuTriggerFor]="appUserMenu">
+			<mat-icon fontSet="material-symbols-rounded">manage_accounts</mat-icon>
+		</button>
+	</mat-toolbar>
 </div>
+
+<mat-menu #appUserMenu="matMenu">
+	<button mat-menu-item
+					(click)="onClickLogout()">Logout</button>
+</mat-menu>

@@ -1,0 +1,91 @@
+@use "@angular/material" as mat;
+@use "variables/font";
+
+$typo-config: null; // Typo config by default
+
+@font-face {
+  font-family: font.$default-font-family;
+  src: url("#{font.$fonts-path}Roboto-Regular.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: font.$default-font-family-bold;
+  font-weight: 500;
+  src: url("#{font.$fonts-path}Roboto-Medium.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: font.$alternative-font-family;
+  src: url("#{font.$fonts-path}coolvetica.otf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: font.$alternative2-font-family;
+  src: url("#{font.$fonts-path}Righteous-Regular.ttf") format("truetype");
+  font-display: swap;
+}
+
+// Typography config
+
+$roboto-typo-config: mat.define-typography-config(
+  $font-family: font.$default-font-family,
+  // h1
+  $headline-5: mat.define-typography-level(
+      $font-size: 24px,
+      $line-height: 24px,
+      $font-family: font.$default-font-family-bold,
+      $letter-spacing: 0.1px),
+  // h2
+  $headline-6: mat.define-typography-level(
+      $font-size: 20px,
+      $line-height: 24px,
+      $font-family: font.$default-font-family-bold,
+      $letter-spacing: 0.1px),
+  // h3
+  $subtitle-1: mat.define-typography-level(
+      $font-size: 16px,
+      $line-height: 24px,
+      $font-family: font.$default-font-family-bold,
+      $letter-spacing: 0.1px),
+  // h4
+  $subtitle-2: mat.define-typography-level(
+      $font-size: 14px,
+      $line-height: 24px,
+      $letter-spacing: 0.1px,
+      $font-family: font.$default-font-family-bold),
+  // base body
+  $body-1:
+    mat.define-typography-level(
+      $font-size: 14px,
+      $line-height: 22px,
+      $font-family: font.$default-font-family),
+  // bolder body
+  $body-2:
+    mat.define-typography-level(
+      $font-size: 16px,
+      $line-height: 24px,
+      $font-family: font.$default-font-family-bold),
+  // Smaller body and hint text
+  $caption:
+    mat.define-typography-level(
+      $font-size: 12px,
+      $line-height: 14px),
+  // buttons and anchors
+  $button:
+    mat.define-typography-level(
+      $font-size: 14px,
+      $line-height: 16px,
+      $font-family: font.$default-font-family-bold,
+      $letter-spacing: 1.25px)
+);
+
+@include mat.typography-hierarchy($roboto-typo-config);
+
+// Typography styles outside Material
+:root {
+  --font-family: #{font.$default-font-family};
+  --font-family-bold: #{font.$default-font-family-bold};
+}

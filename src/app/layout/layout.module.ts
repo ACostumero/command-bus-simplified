@@ -6,6 +6,7 @@ import { FooterComponent } from '@app-layout/components/footer/footer.component'
 import {SharedModule} from '@app-shared/shared.module';
 import { LayoutComponent } from '@app-layout/container/layout.component';
 import {LayoutRoutingModule} from './layout-routing.module';
+import { DrawerComponent } from './components/drawer/drawer.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import {LayoutRoutingModule} from './layout-routing.module';
     FooterComponent,
     HeaderComponent,
     NavBarComponent,
+    DrawerComponent
   ],
   imports: [
     CommonModule,

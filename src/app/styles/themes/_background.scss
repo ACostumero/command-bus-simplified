@@ -1,0 +1,22 @@
+@use "colors/colors";
+@use "functions/color-utils";
+
+/* TODO: SOME COLORS IN FOLLOWING PALETTES ARE DUMMY BECAUSE AREN'T USED YET.
+    IF ANYONE IS NEEDED, CHANGE IT ACCORDING TO DESIGN SYSTEM */
+$background: (
+  status-bar: papayawhip,
+  app-bar: colors.$color-white,
+  background: colors.$color-white,
+  hover: rgba(colors.$color-white, 0.1),
+  card: colors.$color-white,
+  dialog: colors.$color-darker-blue,
+  disabled-button: rgba(var(--primary-color-rgb), 0.4),
+  raised-button: color-utils.get-primary-color(),
+  focused-button: red,
+  selected-button: red,
+  selected-disabled-button: papayawhip,
+  disabled-button-toggle: papayawhip,
+  unselected-chip: transparent,
+  disabled-list-option: papayawhip,
+  tooltip: colors.$color-black,
+);

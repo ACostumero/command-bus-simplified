@@ -25,17 +25,22 @@
             ],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
+            "allowedCommonJsDependencies": [
+              "@messageformat/core"
+            ],
             "assets": [
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
-              "@angular/material/prebuilt-themes/pink-bluegrey.css",
               "src/styles.scss"
             ],
             "stylePreprocessorOptions": {
               "includePaths": [
-                "src/styles"
+                "src/app/styles/abstracts",
+                "src/app/styles/base",
+                "src/app/styles/components",
+                "src/app/styles/themes"
               ]
             },
             "scripts": []
@@ -99,12 +104,14 @@
               "src/assets"
             ],
             "styles": [
-              "@angular/material/prebuilt-themes/pink-bluegrey.css",
               "src/styles.scss"
             ],
             "stylePreprocessorOptions": {
               "includePaths": [
-                "src/styles"
+                "src/app/styles/abstracts",
+                "src/app/styles/base",
+                "src/app/styles/components",
+                "src/app/styles/themes"
               ]
             },
             "scripts": []

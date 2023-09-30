@@ -1,13 +1,15 @@
+@use 'variables/layout';
+@use 'mixins/config';
+
 $block: 'users';
 
 .#{$block} {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+  @include config.default-component-config();
 
   &__search {
     display: flex;
     justify-content: flex-end;
+    margin-bottom: 12px;
   }
 
   &__no-results {

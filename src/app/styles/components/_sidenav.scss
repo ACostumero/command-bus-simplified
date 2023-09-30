@@ -1,0 +1,7 @@
+@use "colors/colors";
+
+mat-sidenav-container.mat-sidenav-container {
+  .mat-drawer-backdrop.mat-drawer-shown {
+    background: colors.$color-sidenav-backdrop;
+  }
+}

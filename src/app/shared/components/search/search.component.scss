@@ -1,0 +1,53 @@
+@use 'functions/color-utils';
+$block: 'search';
+$primary-text-color: color-utils.get-primary-color();
+.#{$block} {
+  
+    mat-form-field.mat-mdc-form-field {
+      width: 320px;
+
+      
+      div.mat-mdc-text-field-wrapper.mdc-text-field--outlined {
+        // Angular 15
+        div.mat-mdc-form-field-flex {
+          div.mdc-notched-outline {
+            div.mdc-notched-outline__leading {
+              width: 50px;
+              border-radius: 24px 0 0 24px;
+            }
+           div.mdc-notched-outline__trailing {
+            border-radius: 0 24px 24px 0 ;
+           } 
+          }
+        }
+        // --
+        
+        // Angular 16
+        --mdc-outlined-text-field-container-shape: 60px;
+        height: 40px;
+        align-items: center;
+        color: $primary-text-color;
+        // --
+      }
+      div.mat-mdc-form-field-subscript-wrapper {
+        display: none;
+      }
+
+      .#{$block}__input {
+        &::placeholder {
+          color: $primary-text-color;
+        }
+
+      }
+
+      .#{$block}__close-button {
+        height: 40px;
+        width: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+      }
+    }
+
+}

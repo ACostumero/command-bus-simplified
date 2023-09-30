@@ -1,0 +1,38 @@
+//Breakpoints
+$media-xxs: 375px;
+$media-xs: 480px;
+$media-sm: 768px;
+$media-md: 1023px;
+$media-lg: 1280px;
+$media-xl: 1480px;
+// Breakpoint for dialogs
+$media-dialog: 599px;
+// Layout Defaults
+$layout-margin-top: 64px;
+$layout-margin-right: 16px;
+$layout-margin-bottom: 120px;
+$layout-margin-left: 16px;
+
+// Layout width limit for grids
+$layout-width-grid-limit: 488px;
+
+$toolbar-height: 64px;
+$toolbar-media-height: 56px;
+
+// Defaults for dialogs
+$dialog-content-vertical-padding: 40px;
+$dialog-content-horizontal-padding: 40px;
+$dialog-backdrop-class: 'ntx-dialog-backdrop';
+
+// Defaults for menus
+$menu-default-width: 264px;
+
+// Height for tenant logo
+$tenant-logo-height: 30px;
+
+$navigation-panel-width: 280px;
+$header-height: 68px;
+
+$layout-padding-inline: 24px;
+$layout-padding-block: 40px;
+

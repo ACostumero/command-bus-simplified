@@ -1,0 +1,27 @@
+@use "palettes";
+@use "functions/color-utils";
+@use "colors/colors";
+
+$block: "drawer";
+.#{$block}{
+  overflow: hidden;
+  position: absolute;
+  display: flex;
+  justify-content: flex-end;
+  height: 100%;
+  width: 100%;
+  z-index: 2;
+  top: 0;
+  right: 0;
+  bottom: 0;
+
+  &__content {
+    background-color: colors.$color-white;
+    box-shadow: colors.$sidenav-shadow;
+  }
+
+  &__backdrop {
+    background-color: colors.$color-sidenav-backdrop;
+    flex: 1;
+  }
+}

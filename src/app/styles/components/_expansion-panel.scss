@@ -1,0 +1,23 @@
+@use 'functions/color-utils';
+
+mat-expansion-panel.mat-expansion-panel {
+  background: color-utils.get-primary-color(200);
+  mat-expansion-panel-header {
+    &.mat-expansion-panel-header,
+    &.mat-expansion-panel-header.mat-expanded {
+      height: 40px;
+      span.mat-content {
+        align-items: center;
+        mat-icon.mat-icon {
+          margin-right: 8px;
+        }
+      }
+    }
+
+  }
+  div.mat-expansion-panel-content {
+    div.mat-expansion-panel-body {
+      padding: 0;
+    }
+  }
+}

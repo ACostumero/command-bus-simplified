@@ -1,42 +1,44 @@
+// Core
 import { Component } from '@angular/core';
-import {SetLoaderCommand} from '@app-commands/set-loader.command';
-import {CommandBus} from '@app-core/command-bus/command-bus';
-import {REPOSITORY_URL} from '@app-core/constants/env.const';
-import {IAppSettings} from '@app-core/interfaces/app-settings.interface';
-import {AppService} from '@app-core/services/app.service';
-import {DrawerService} from '@app-core/services/drawer.service';
-import {RouterService} from '@app-core/services/router.service';
+
+// Services
+import { DrawerService } from '@app-core/services/drawer.service';
+
+// Interfaces, enums
+import { DRAWER_WIDTH } from '@app-core/enums/drawer-width.enum';
+import { TDrawer } from '@app-core/interfaces/drawer-service.interface';
+import { ColorResourcesComponent } from '@app-modules/color-resources/container/color-resources.component';
+
+// Components
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+	selector: 'app-header',
+	templateUrl: './header.component.html',
+	styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  public appSettings: IAppSettings;
-  constructor(
-    private readonly _appService: AppService,
-    private readonly _drawerService: DrawerService,
-    private readonly _commandBus: CommandBus,
-    private readonly _routerService: RouterService
-    ) {
-    this.appSettings = this._appService.appSettings;
-  }
 
-  public toggleDrawer() {
-    this._drawerService.toggle();
-  }
+	constructor(
+		private readonly _drawerService: DrawerService
+	) { }
 
-  public goToGitHubRepo() {
-    this._routerService.goToExternalPage(REPOSITORY_URL);
-  }
+	/**
+	 * Example function for how to open a drawer
+	 * Remember that the drawer has a generic type that corresponds
+	 * with the comopnent type that is rendered inside
+	 * The props attribute are a partial of rendered component props
+	 */
+	public openExampleDrawer() {
+		const drawerData: TDrawer<ColorResourcesComponent> = {
+			props: {},
+			type: ColorResourcesComponent,
+			width: DRAWER_WIDTH.PREVIEW
+		};
+		this._drawerService.openDrawer(drawerData);
+	}
 
-  public checkCommandBusAlive() {
-    this._commandBus.checkSubscriptionAlive();
-  }
-
-  public testBus() {
-    this._commandBus.dispatch(new SetLoaderCommand(true));
-  }
+	onClickLogout() {
+		//
+	}
 
 }

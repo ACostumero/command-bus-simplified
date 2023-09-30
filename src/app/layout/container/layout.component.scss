@@ -1,39 +1,28 @@
+@use "variables/layout";
+@use "colors/colors";
+@use "functions/color-utils";
+
 $block: 'layout';
 
-$header-height: 48px;
-
 .#{$block} {
-  display: flex;
-  flex-flow: row wrap;
   height: 100vh;
-  background: palevioletred;
-  overflow: hidden;
-  &__header {
-    flex: 0 1 100%;
-    height: $header-height;
-  }
-
+  background: color-utils.get-primary-color(200);
   &__sidenav {
-    width: 100%;
-    &--nav {
-      flex: 0 1 60px;
-      height: calc(100vh - $header-height);
-    }
-
-    &--content {
-      height: calc(100vh - $header-height);
-      overflow: auto;
-
-      &__main {
-        flex: 1 0 auto;
-        padding: 24px; // TODO: Modify padding on mobile layouts
-      }
-    }
-
+    width: layout.$navigation-panel-width;
+    border-right: solid 1px #{color-utils.get-primary-color(300)};
+    background: color-utils.get-primary-color(200);
   }
 
-  &__aside {
-    flex: 0 1 20vw;
-    display: none; // TODO: Remove when has been implemented
+  &__content {
+    overflow: hidden;
+    &--header {
+      flex: 0 1 100%;
+      height: layout.$header-height;
+      box-shadow: colors.$header-shadow;
+    }
+    &--main {
+      height: calc(100vh - #{layout.$header-height});
+      overflow: hidden;
+    }
   }
 }

@@ -30,9 +30,7 @@
       "@app-data/*": ["src/app/data/*"],
       "@app-modules/*": ["src/app/modules/*"],
       "@app-layout/*": ["src/app/layout/*"],
-      "@app-shared/*": [
-        "src/app/shared/*"
-      ],
+      "@app-shared/*": ["src/app/shared/*"]
     },
     "types": ["reflect-metadata"]
   },

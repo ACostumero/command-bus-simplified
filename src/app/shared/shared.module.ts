@@ -6,8 +6,10 @@ import {SetLoaderCommandHandler} from '@app-command-handlers/set-loader.command-
 import {ICommandHandler} from '@app-core/command-bus/interfaces/command-handler.interface';
 import {CommandHandlerRegistryService} from '@app-core/command-bus/services/command-handler-registry.service';
 import { AvatarComponent } from './components/avatar/avatar.component';
+import { CoreModule } from '@app-core/core.module';
+import { SearchComponent } from './components/search/search.component';
 
-const COMPONENTS = [DialogComponent, AvatarComponent]
+const COMPONENTS = [DialogComponent, AvatarComponent, SearchComponent]
 const SHARED_COMMAND_HANDLERS: Type<ICommandHandler>[] = [
   SetLoaderCommandHandler
 ];
@@ -17,12 +19,13 @@ const SHARED_COMMAND_HANDLERS: Type<ICommandHandler>[] = [
   ],
   imports: [
     CommonModule,
-    MaterialModule
+    MaterialModule,
+    CoreModule
   ],
   providers: [
     SHARED_COMMAND_HANDLERS
   ],
-  exports: [MaterialModule, ...COMPONENTS]
+  exports: [MaterialModule, CoreModule, ...COMPONENTS]
 })
 export class SharedModule {
   constructor(private readonly commandHandlerRegistryService: CommandHandlerRegistryService) {

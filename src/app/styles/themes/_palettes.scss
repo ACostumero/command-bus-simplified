@@ -1,0 +1,68 @@
+@use '@angular/material' as mat;
+@use "colors/colors";
+
+
+// The DS color values are not exactly than using hsl conversion, but
+// the hue using a color-comparison-tool is almost the same,
+// and using this method we can take advantages of hsl-based palettes
+$palette-primary: mat.define-palette((
+  50: #fafafa,
+  100: #f5f5f5,
+  200: #eeeeee,
+  300: #e0e0e0,
+  400: #bdbdbd,
+  500: #9e9e9e,
+  600: #757575,
+  700: #616161,
+  800: #424242,
+  900: #212121,
+  contrast: (
+    50: colors.$color-black,
+    100: colors.$color-black,
+    200: colors.$color-black,
+    300: colors.$color-black,
+    400: colors.$color-black,
+    500: colors.$color-white,
+    600: colors.$color-white,
+    700: colors.$color-white,
+    800: colors.$color-white,
+    900: colors.$color-white,
+  ),
+));
+
+$palette-accent: mat.define-palette((
+  100: #e9f7fd,
+  200: #aee3f8,
+  300: #6cc7ec,
+  400: #1aa9e2,
+  500: #1a98ca,
+  contrast: (
+    100: colors.$color-black,
+    200: colors.$color-black,
+    300: colors.$color-black,
+    400: colors.$color-white,
+    500: colors.$color-white,
+  ),
+), 400, 100, 500);
+
+$palette-warn: mat.define-palette((
+  100: #EBD1D1,
+  500: #991b1b,
+  700: #991b1b,
+  contrast: (
+    100: colors.$color-white,
+    500: colors.$color-white,
+    700: colors.$color-white,
+  ),
+));
+
+$palette-success: mat.define-palette((
+  100: #eaf6ef,
+  500: #166534,
+  700: #166534,
+  contrast: (
+    100: colors.$color-white,
+    500: colors.$color-white,
+    700: colors.$color-white,
+  ),
+));

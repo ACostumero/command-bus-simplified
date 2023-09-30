@@ -1,0 +1,39 @@
+
+/* DEFAULT COLORS */
+$color-white: #ffffff;
+$color-black: #000000;
+
+$color-success: #166534;
+$color-success-100: #166534;
+$color-yellow: #f8b02f;
+$color-error: #991b1b;
+$color-darker-blue: #1e293b;
+$color-blue: #1e293b;
+
+/* OPACITY */
+$color-white-10: #ffffff1a;
+$color-white-20: #ffffff33;
+$color-white-70: #ffffffb3;
+$color-black-04: #0000000a;
+$color-black-10: #0000001a;
+$color-black-20: #00000033;
+
+$color-soft-grey: #F9F9F9;
+$brand-name-color: #e27390;
+
+/* TRANSITIONS */
+$image-blend-transition: ($color-black, #00000014, transparent);
+$image-blend-transition-soft: (#00000096, #00000014, transparent);
+
+/* COMPONENT DEFAULT COLORS */
+$table-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%); // Same box-shadow as material mat-elevation-z4
+$color-sidenav-backdrop: #28272791;
+$sidenav-shadow: 0px 8px 10px -5px rgb(0 0 0 / 20%), 0px 16px 24px 2px rgb(0 0 0 / 14%), 0px 6px 30px 5px rgb(0 0 0 / 12%);
+
+$header-shadow: 0 2px 3px #{$color-black-10};
+$header-icon-color: #757575;
+
+/* SCROLLBAR */
+$color-scrollbar-track: #1a1a1a;
+$color-scrollbar-thumb: rgba(255, 255, 255, 0.1);
+$color-scrollbar-thumb-hover: rgba(255, 255, 255, 0.2);

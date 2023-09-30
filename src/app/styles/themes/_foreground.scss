@@ -1,0 +1,22 @@
+@use "colors/colors";
+@use "functions/color-utils";
+
+/* TODO: SOME COLORS IN FOLLOWING PALETTES ARE DUMMY BECAUSE AREN'T USED YET.
+    IF ANYONE IS NEEDED, CHANGE IT ACCORDING TO DESIGN SYSTEM */
+$foreground: (
+  base: color-utils.get-primary-color(600),
+  divider: color-utils.get-primary-color(300),
+  // Button border also
+  dividers: colors.$color-white,
+  disabled: color-utils.get-primary-color(500),
+  disabled-button: color-utils.get-primary-color(600),
+  disabled-text: color-utils.get-primary-color(800),
+  hint-text: color-utils.get-primary-color(500),
+  secondary-text: color-utils.get-primary-color(800),
+  icon: color-utils.get-primary-color(800),
+  icons: color-utils.get-primary-color(800),
+  text: color-utils.get-primary-color(800),
+  slider-min: palegreen,
+  slider-off: color-utils.get-accent-color(200),
+  slider-off-active: color-utils.get-accent-color(500),
+);

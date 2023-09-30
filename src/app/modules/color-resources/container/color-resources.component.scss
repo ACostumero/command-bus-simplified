@@ -1,8 +1,8 @@
+@use 'mixins/config';
 $block: 'color-resources';
 
 .#{$block} {
-  display: flex;
-  flex-direction: column;
+  @include config.default-component-config();
 
   &__content {
     display: grid;

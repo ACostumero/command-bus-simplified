@@ -1,0 +1,1 @@
+export type TPaletteColor = 'primary' | 'accent' | 'warn' | '';

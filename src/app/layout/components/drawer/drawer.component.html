@@ -1,0 +1,11 @@
+<div class="drawer">
+  <div class="drawer__backdrop" (click)="onOpenedChange(drawer.open)" *ngIf="animationEnd" @fadeInOut></div>
+  <div class="drawer__content"
+       [ngStyle]="{'width': '300px'}"
+       @inOutPaneAnimation
+       (@inOutPaneAnimation.start)="animationEnd = false"
+       (@inOutPaneAnimation.done)="animationEnd = true">
+    <ng-container [appRenderDrawer]="drawer.drawerData"></ng-container>
+  </div>
+</div>
+

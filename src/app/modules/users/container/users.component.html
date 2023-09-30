@@ -1,14 +1,7 @@
 <div class="users">
 
   <div class="users__search">
-    <mat-form-field appearance="outline" color="accent">
-      <mat-label>Search for users</mat-label>
-      <input matInput #filter placeholder="Find by Id" [(ngModel)]="filter.value">
-      <button *ngIf="filter.value" matSuffix mat-icon-button (click)="filter.value=''">
-        <mat-icon matSuffix color="accent" class="material-symbols-outlined">close</mat-icon>
-      </button>
-      <mat-icon matSuffix *ngIf="!filter.value" color="accent" class="material-symbols-outlined">search</mat-icon>
-    </mat-form-field>
+    <app-search></app-search>
   </div>
   <div class="users__table" *ngIf="users$ | async as users">
     <mat-table class="mat-elevation-z6" [dataSource]="users">
@@ -43,18 +36,18 @@
      <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef>
         <button mat-flat-button color="primary" (click)="create()">
-          <mat-icon class="material-symbols-outlined">add</mat-icon>
+          <mat-icon fontSet="material-symbols-outlined">add</mat-icon>
           <span>Add</span>
         </button>
       </mat-header-cell>
 
       <mat-cell *matCellDef="let row; let i=index;">
         <button mat-icon-button color="accent" (click)="edit(row)">
-          <mat-icon aria-label="Edit" class="material-symbols-outlined">edit</mat-icon>
+          <mat-icon aria-label="Edit" fontSet="material-symbols-outlined">edit</mat-icon>
         </button>
 
         <button mat-icon-button color="warn" (click)="delete(row)">
-          <mat-icon aria-label="Delete" class="material-symbols-outlined">delete_outlined</mat-icon>
+          <mat-icon aria-label="Delete" fontSet="material-symbols-outlined">delete_outlined</mat-icon>
         </button>
       </mat-cell>
     </ng-container>

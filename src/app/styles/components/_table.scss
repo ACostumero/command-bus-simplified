@@ -1,0 +1,6 @@
+@use "functions/color-utils";
+table {
+  .mat-icon-button  .mat-icon {
+    color: #{color-utils.get-primary-color(600)};
+  }
+}

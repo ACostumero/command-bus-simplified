@@ -1,17 +1,29 @@
-<div class="layout">
-  <header class="layout__header">
-    <app-header></app-header>
-  </header>
-  <mat-drawer-container class="layout__sidenav">
-    <mat-drawer #drawer mode="side">
-      <nav class="layout__sidenav--nav">
-        <app-nav-bar></app-nav-bar>
-      </nav>
-    </mat-drawer>
-    <mat-drawer-content class="layout__sidenav--content">
-      <main class="layout__sidenav--content__main">
-        <router-outlet></router-outlet>
-      </main>
-    </mat-drawer-content>
-  </mat-drawer-container>
-</div>
+<mat-sidenav-container class="layout">
+  <!-- Navigation Sidenav -->
+  <mat-sidenav [mode]="'side'"
+               [position]="'start'"
+               [fixedInViewport]="true"
+               [disableClose]="true"
+               [autoFocus]="false"
+               [opened]="true"
+               #navigationSidenav
+               class="layout__sidenav">
+    <nav class="layout__sidenav--nav">
+      <app-nav-bar></app-nav-bar>
+    </nav>
+  </mat-sidenav>
+  <mat-sidenav-content class="layout__content">
+    <app-drawer #drawerComponent
+                *ngFor="let openDrawer of drawer$ | async"
+                [drawer]="openDrawer"></app-drawer>
+
+    <header class="layout__content--header">
+      <app-header></app-header>
+    </header>
+
+    <main class="layout__content--main">
+      <router-outlet></router-outlet>
+    </main>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>

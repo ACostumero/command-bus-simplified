@@ -1,0 +1,9 @@
+@use 'variables/layout';
+
+@mixin default-component-config() {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - #{layout.$header-height});
+  overflow: auto;
+  padding: #{layout.$layout-padding-block} #{layout.$layout-padding-inline};
+}

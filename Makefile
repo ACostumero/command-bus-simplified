@@ -40,6 +40,10 @@ logs: ## Displays the aggregated logs of the container.
 .PHONY: restart
 restart: down build logs ## Stops the container and restarts it.
 
+.PHONY: watch
+watch: up logs ## Starts the container and show logs.
+
+
 .PHONY: stop
 stop: ## Stops the container, but does not remove it.
 	@docker-compose -f "docker-compose.yml" stop

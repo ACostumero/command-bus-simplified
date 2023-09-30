@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {HttpClientModule} from '@angular/common/http';
 import {MatDialogModule} from '@angular/material/dialog';
 import {ErrorHandlingModule} from './error-handling.module';
+import { LayoutModule } from '@app-layout/layout.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {ErrorHandlingModule} from './error-handling.module';
     CommandBusModule.forRoot(),
     BrowserAnimationsModule,
     HttpClientModule,
-    MatDialogModule
+    MatDialogModule,
+    LayoutModule
   ],
   bootstrap: [AppComponent]
 })
