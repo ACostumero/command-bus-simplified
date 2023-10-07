@@ -11,6 +11,7 @@ export class GlobalErrorHandler implements ErrorHandler {
 
   public handleError(error: Error): void {
     this._ngZone.run(() => {
+      console.error(error);
       this._snackbarService.showError(error.message);
     });
   }

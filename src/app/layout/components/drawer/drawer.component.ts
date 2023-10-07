@@ -1,10 +1,11 @@
 import { trigger, style, transition, animate } from '@angular/animations';
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, DestroyRef, EventEmitter, Input, OnDestroy, OnInit, Output, inject } from '@angular/core';
 import { Subject, takeUntil, tap } from 'rxjs';
 
 import {IDrawerService} from '@app-core/interfaces/drawer-service.interface';
 import {DRAWER_WIDTH} from '@app-core/enums/drawer-width.enum';
 import { NavigationService } from '@app-core/services/navigation.service';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-drawer',
@@ -28,13 +29,13 @@ import { NavigationService } from '@app-core/services/navigation.service';
     ])
   ]
 })
-export class DrawerComponent implements OnInit, OnDestroy {
+export class DrawerComponent implements OnInit {
 
   @Input() drawer!: IDrawerService<unknown>;
 
   @Output() openedChange = new EventEmitter<boolean>();
 
-  private readonly _destroySubscriptions = new Subject<void>();
+  private _destroyRef = inject(DestroyRef);
   public animationEnd = false;
   public readonly DEFAULT_WIDTH = DRAWER_WIDTH.DEFAULT;
   constructor(private readonly _navigationService: NavigationService) {}
@@ -43,17 +44,10 @@ export class DrawerComponent implements OnInit, OnDestroy {
     this._listenNavigationChanges();
   }
 
-  ngOnDestroy(): void {
-    if (!this._destroySubscriptions.closed) {
-      this._destroySubscriptions.next();
-      this._destroySubscriptions.complete();
-    }
-  }
-
   private _listenNavigationChanges() {
     this._navigationService.getNavigationValue()
       .pipe(
-        takeUntil(this._destroySubscriptions),
+        takeUntilDestroyed(this._destroyRef),
         tap(() => {
           this.onOpenedChange(true);
         })
