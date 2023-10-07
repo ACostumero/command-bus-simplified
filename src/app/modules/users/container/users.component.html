@@ -57,6 +57,10 @@
       </mat-header-cell>
 
       <mat-cell *matCellDef="let row; let i=index;">
+        <button mat-icon-button color="accent" (click)="preview(row.id)">
+          <mat-icon aria-label="Preview" fontSet="material-symbols-outlined">preview</mat-icon>
+        </button>
+
         <button mat-icon-button color="accent" (click)="edit(row)">
           <mat-icon aria-label="Edit" fontSet="material-symbols-outlined">edit</mat-icon>
         </button>
@@ -72,7 +76,7 @@
      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
    </mat-table>
    <div class="users__no-results" *ngIf="isContentLoading$ | async">
-    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    <mat-progress-bar mode="indeterminate" color="accent"></mat-progress-bar>
   </div>
   </div>
 

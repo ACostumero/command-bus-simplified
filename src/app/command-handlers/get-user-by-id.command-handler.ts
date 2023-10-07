@@ -6,7 +6,7 @@ import { IUser } from "@app-core/interfaces/user.interface";
 import { UserService } from "@app-core/services/user.service";
 import {Logger} from "@app-core/utils/logger.util";
 import { UsersState } from "@app-modules/users/state/users.state";
-import {first, tap} from "rxjs";
+import {delay, first, tap} from "rxjs";
 
 @Injectable()
 @CommandHandler('GetUserByIdCommand')
@@ -20,6 +20,7 @@ export class GetUserByIdCommandHandler implements ICommandHandler {
     Logger.info('[GetUserByIdCommandHandler] -> handle()');
     return this._userService.getById(command.payload).pipe(
       first(),
+      delay(500), // FIXME: Only for testing purposes
       tap((user: IUser) => this._usersState.setSelectedUser(user))
     );
   }

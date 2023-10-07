@@ -41,6 +41,11 @@ export class UsersComponent implements OnDestroy{
     this._usersFacade.openCreateUserDialog();
   }
 
+  public preview(id: string) {
+    console.log('preview', id);
+    this._usersFacade.openPreview(id);
+  }
+
   public edit(row: IUser) {
     this._usersFacade.editUser(row);
   }

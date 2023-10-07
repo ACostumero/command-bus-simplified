@@ -24,7 +24,7 @@ export class UserService {
   }
 
   public getById(id: string): Observable<IUser> {
-    const routeInterface: IRouteInterface = {segment: `${UserService._USERS_SEGMENT}/${id}`}
+    const routeInterface: IRouteInterface = {segment: `${UserService._USERS_SEGMENT}${id}`}
 
     return this._apiService.get<IApiResponse<IUserApi>>(routeInterface).pipe(
       map((apiResponse: IApiResponse<IUserApi>) => new UserMapper().fromApi(apiResponse.data))

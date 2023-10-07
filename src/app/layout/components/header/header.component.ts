@@ -9,6 +9,9 @@ import { DRAWER_WIDTH } from '@app-core/enums/drawer-width.enum';
 import { TDrawer } from '@app-core/interfaces/drawer-service.interface';
 import { ColorResourcesComponent } from '@app-modules/color-resources/container/color-resources.component';
 import { MatMenu } from '@angular/material/menu';
+import { CommandBus } from '@app-core/command-bus/command-bus';
+import { OpenDrawerCommand } from '@app-commands/open-drawer.command';
+import { CloseDrawerCommand } from '@app-commands/close-drawer.command';
 
 // Components
 
@@ -18,9 +21,13 @@ import { MatMenu } from '@angular/material/menu';
 	styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-
+	public drawerData: TDrawer<ColorResourcesComponent> = {
+		props: {},
+		type: ColorResourcesComponent,
+		width: DRAWER_WIDTH.PREVIEW
+	};
 	constructor(
-		private readonly _drawerService: DrawerService
+		private readonly _commandBus: CommandBus
 	) { }
 
 	/**
@@ -35,11 +42,6 @@ export class HeaderComponent {
 			type: ColorResourcesComponent,
 			width: DRAWER_WIDTH.PREVIEW
 		};
-		this._drawerService.openDrawer(drawerData);
+		this._commandBus.dispatch(new OpenDrawerCommand(drawerData));
 	}
-
-	onClickLogout() {
-		//
-	}
-
 }

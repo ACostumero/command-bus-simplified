@@ -8,10 +8,14 @@ import {CommandHandlerRegistryService} from '@app-core/command-bus/services/comm
 import { AvatarComponent } from './components/avatar/avatar.component';
 import { CoreModule } from '@app-core/core.module';
 import { SearchComponent } from './components/search/search.component';
+import { OpenDrawerCommandHandler } from '@app-command-handlers/open-drawer-command-handler';
+import { CloseDrawerCommandHandler } from '@app-command-handlers/close-drawer-command-handler';
 
 const COMPONENTS = [DialogComponent, AvatarComponent, SearchComponent]
 const SHARED_COMMAND_HANDLERS: Type<ICommandHandler>[] = [
-  SetLoaderCommandHandler
+  SetLoaderCommandHandler,
+  OpenDrawerCommandHandler,
+  CloseDrawerCommandHandler
 ];
 @NgModule({
   declarations: [

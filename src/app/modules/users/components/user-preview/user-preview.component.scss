@@ -1,0 +1,29 @@
+@use 'colors/colors';
+@use 'functions/color-utils';
+$block: 'user-preview';
+
+.#{$block} {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 100%;
+  background: color-utils.get-primary-color(100);
+  &__close {
+    position: absolute;
+  }
+  &__image-wrapper {
+    height: 200px;
+    width: 100%;
+    overflow: hidden;
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+  }
+  &__details {
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+  }
+}

@@ -16,6 +16,8 @@ import {ResetUsersCommandHandler} from '@app-command-handlers/reset-users.comman
 
 import {UsersComponent} from '@app-modules/users/container/users.component';
 import { CreateEditUserComponent } from '@app-modules/users/components/create-edit-user/create-edit-user.component';
+import { UserPreviewComponent } from './components/user-preview/user-preview.component';
+import { ResetSelectedUserCommandHandler } from '@app-command-handlers/reset-selected-user.command-handler';
 
 const USERS_COMMAND_HANDLERS: Type<ICommandHandler>[] = [
   GetUsersCommandHandler,
@@ -23,11 +25,12 @@ const USERS_COMMAND_HANDLERS: Type<ICommandHandler>[] = [
   CreateUserCommandHandler,
   EditUserCommandHandler,
   DeleteUserCommandHandler,
-  ResetUsersCommandHandler
+  ResetUsersCommandHandler,
+  ResetSelectedUserCommandHandler
 ];
 
 @NgModule({
-  declarations: [UsersComponent, CreateEditUserComponent],
+  declarations: [UsersComponent, CreateEditUserComponent, UserPreviewComponent],
   imports: [
     CommonModule,
     UsersRoutingModule,

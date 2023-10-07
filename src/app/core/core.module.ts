@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import {RenderDrawerDirective} from '@app-core/directives/render-drawer.directive';
 import {TranslateModule} from '@ngx-translate/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -13,13 +13,15 @@ import {FormsModule} from '@angular/forms';
     CommonModule,
     TranslateModule,
     NgOptimizedImage,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     RenderDrawerDirective,
     TranslateModule,
     NgOptimizedImage,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class CoreModule { }

@@ -1,13 +1,22 @@
 import {Injectable} from "@angular/core";
+import { CloseDrawerCommand } from "@app-commands/close-drawer.command";
 import {DeleteUserCommand} from "@app-commands/delete-user.command";
 import {EditUserCommand} from "@app-commands/edit-user.command";
+import { GetUserByIdCommand } from "@app-commands/get-user-by-id.command";
 import {GetUsersCommand} from "@app-commands/get-users.command";
+import { OpenDrawerCommand } from "@app-commands/open-drawer.command";
+import { ResetSelectedUserCommand } from "@app-commands/reset-selected-user.command";
 import {ResetUsersCommand} from "@app-commands/reset-users.command";
 import {SetLoaderCommand} from "@app-commands/set-loader.command";
 import {CommandBus} from "@app-core/command-bus/command-bus";
+import { DRAWER_WIDTH } from "@app-core/enums/drawer-width.enum";
+import { TDrawer } from "@app-core/interfaces/drawer-service.interface";
 import {IUser} from "@app-core/interfaces/user.interface";
 import {DialogService} from "@app-core/services/dialog.service";
+import { DrawerService } from "@app-core/services/drawer.service";
 import { CreateEditUserComponent } from '@app-modules/users/components/create-edit-user/create-edit-user.component';
+import { UserPreviewComponent } from '@app-modules/users/components/user-preview/user-preview.component';
+
 import {filter, first, tap} from "rxjs";
 
 @Injectable()
@@ -23,6 +32,26 @@ export class UsersFacade {
       new SetLoaderCommand(true),
       new GetUsersCommand(),
       new SetLoaderCommand(false)
+    ]);
+  }
+
+  public openPreview(id: string) {
+    const drawerData: TDrawer<UserPreviewComponent> = {
+			type: UserPreviewComponent,
+			width: DRAWER_WIDTH.PREVIEW,
+      props: {
+        onClose: () => {
+          console.log('ejecutando on close');
+          this._commandBus.dispatchPipeline([
+            new CloseDrawerCommand(UserPreviewComponent),
+            new ResetSelectedUserCommand()
+          ]);
+        }
+      }
+		};
+    this._commandBus.dispatchPipeline([
+      new OpenDrawerCommand(drawerData),
+      new GetUserByIdCommand(id)
     ]);
   }
 

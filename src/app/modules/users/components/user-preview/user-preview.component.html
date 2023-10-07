@@ -1,0 +1,20 @@
+<div class="user-preview">
+  <div class="user-preview__close">
+    <button mat-icon-button (click)="closeDrawer()" color="accent">
+			<mat-icon fontSet="material-symbols-outlined">close</mat-icon>
+		</button>
+  </div>
+    <ng-container *ngIf="user$ | async as user else loading">
+        <div class="user-preview__image-wrapper">
+          <img [src]="user.avatar" alt="user avatar">
+        </div>
+        <div class="user-preview__details">
+          <h1>{{ user.firstName }} {{ user.lastName }}</h1>
+          <h3>{{ user.email }}</h3>
+        </div>
+    </ng-container>
+    <ng-template #loading>
+        <mat-progress-bar mode="indeterminate" color="accent"></mat-progress-bar>
+    </ng-template>
+
+</div>
