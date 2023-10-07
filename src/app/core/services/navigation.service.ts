@@ -1,21 +1,21 @@
 import { Injectable } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, filter, tap } from 'rxjs';
 
 
 @Injectable({
   providedIn: 'root'
 })
+// FIXME: Refactor this code
 export class NavigationService {
 
   private navigationSubject = new Subject<boolean>();
 
   constructor(private router: Router) {
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationStart) {
-        this.navigationSubject.next(true);
-      }
-    });
+    this.router.events.pipe(
+      filter((event) => event instanceof NavigationStart),
+      tap(() => this.navigationSubject.next(true))
+    ).subscribe();
   }
 
   getNavigationValue(): Observable<boolean> {

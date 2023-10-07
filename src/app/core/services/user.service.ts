@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {ApiService} from "./api.service";
 import {IRouteInterface} from "@app-core/interfaces/http.interface";
-import {IApiResponse} from "@app-core/interfaces/api-response.interface";
+import {IApiCollectionResponse, IApiResponse} from "@app-core/interfaces/api-response.interface";
 import {IUserApi, IUserUpdateApi} from "@app-data/interfaces/user.api.interface";
 import {UserMapper} from "@app-core/mappers/user.mapper";
 import {EMPTY, Observable, map, tap} from "rxjs";
@@ -18,8 +18,16 @@ export class UserService {
   public getAll(): Observable<IUser[]> {
     const routeInterface: IRouteInterface = {segment: `${UserService._USERS_SEGMENT}`}
 
+    return this._apiService.get<IApiCollectionResponse<IUserApi>>(routeInterface).pipe(
+      map((apiResponse: IApiCollectionResponse<IUserApi>) => new UserMapper().fromApiMultiple(apiResponse.data))
+    );
+  }
+
+  public getById(id: string): Observable<IUser> {
+    const routeInterface: IRouteInterface = {segment: `${UserService._USERS_SEGMENT}/${id}`}
+
     return this._apiService.get<IApiResponse<IUserApi>>(routeInterface).pipe(
-      map((apiResponse: IApiResponse<IUserApi>) => new UserMapper().fromApiMultiple(apiResponse.data))
+      map((apiResponse: IApiResponse<IUserApi>) => new UserMapper().fromApi(apiResponse.data))
     );
   }
 

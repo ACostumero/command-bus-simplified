@@ -14,7 +14,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   public static readonly DEBOUNCE_TIME_DEFAULT = 500;
 
   @Input() placeholder: string = 'Search';
-  @Output() onValueChange: EventEmitter<string> = new EventEmitter<string>();
+  @Output() valueChange: EventEmitter<string> = new EventEmitter<string>();
 
   ngOnInit() {
     this._searchValueSource$.pipe(
@@ -48,7 +48,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   }
 
   private _emitValueChange(value: string) {
-    this.onValueChange.emit(value);
+    this.valueChange.emit(value);
   }
 
 

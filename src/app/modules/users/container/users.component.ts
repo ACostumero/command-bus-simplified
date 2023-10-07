@@ -1,7 +1,9 @@
+import { SelectionModel } from '@angular/cdk/collections';
 import { Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
 import {IUser} from '@app-core/interfaces/user.interface';
 import {UsersFacade} from '@app-modules/users/facades/users.facade';
 import { UsersState } from '@app-modules/users/state/users.state';
+import { SearchComponent } from '@app-shared/components/search/search.component';
 import {LoaderState} from '@app-shared/state/loader.state';
 import {Observable, catchError, of, tap, throwError} from 'rxjs';
 
@@ -14,11 +16,10 @@ import {Observable, catchError, of, tap, throwError} from 'rxjs';
 })
 export class UsersComponent implements OnDestroy{
 
-  @ViewChild('filter',  {static: true}) filter!: ElementRef;
   public users$: Observable<IUser[]> = this._usersState.users$;
   public isContentLoading$: Observable<boolean> = this._loaderState.isContentLoading$;
 
-  public displayedColumns = ['id', 'avatar', 'firstName', 'lastName', 'email',  'actions'];
+  public displayedColumns = ['select', 'id', 'avatar', 'firstName', 'lastName', 'email',  'actions'];
 
   constructor(
     private readonly _usersFacade: UsersFacade,
@@ -47,6 +48,19 @@ export class UsersComponent implements OnDestroy{
   public delete(user: IUser) {
     console.log('delete', user);
     this._usersFacade.deleteUser(user.id);
+  }
+
+
+  selection = new SelectionModel<IUser>(true, []);
+
+  /** Whether the number of selected elements matches the total number of rows. */
+  isAllSelected() {
+    return true;
+  }
+
+  /** Selects all rows if they are not all selected; otherwise clear selection. */
+  toggleAllRows() {
+   // 
   }
 
 }

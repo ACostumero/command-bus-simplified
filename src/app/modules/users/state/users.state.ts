@@ -5,13 +5,22 @@ import {BehaviorSubject} from "rxjs";
 @Injectable({providedIn: 'root'})
 export class UsersState {
   private readonly _usersSource: BehaviorSubject<IUser[]> = new BehaviorSubject<IUser[]>([]);
+  private readonly _selectedUser: BehaviorSubject<IUser | null> = new BehaviorSubject<IUser | null>(null);
 
   get users$() {
     return this._usersSource.asObservable();
   }
 
+  get selectedUser$() {
+    return this._selectedUser.asObservable();
+  }
+
   public setUsers(users: IUser[]) {
     this._usersSource.next(users);
+  }
+
+  public setSelectedUser(user: IUser | null) {
+    this._selectedUser.next(user);
   }
 
   public updateUser(updatedUser: IUser) {

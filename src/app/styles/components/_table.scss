@@ -1,5 +1,36 @@
 @use "functions/color-utils";
-table {
+@use "mixins/text";
+
+%truncated-text {
+  max-width: 200px;
+  @include text.truncate();
+}
+
+mat-table.mat-mdc-table {
+
+  mat-header-row.mat-mdc-header-row {
+    background: color-utils.get-primary-color(100);
+    height: 48px;
+    min-height: 48px;
+  }
+
+  mat-header-cell.mat-mdc-header-cell {
+    span {
+      &::first-letter {
+        text-transform: capitalize;
+      }
+    }
+  }
+
+  mat-cell.mat-mdc-cell {
+    height: 48px;
+    min-height: 48px;
+    span {
+      @extend %truncated-text;
+    }
+    
+  }
+
   .mat-icon-button  .mat-icon {
     color: #{color-utils.get-primary-color(600)};
   }

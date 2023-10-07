@@ -1,36 +1,51 @@
 <div class="users">
-
   <div class="users__search">
     <app-search></app-search>
   </div>
   <div class="users__table" *ngIf="users$ | async as users">
     <mat-table class="mat-elevation-z6" [dataSource]="users">
+      <!-- Selection Definition -->
+     <ng-container matColumnDef="select">
+      <mat-header-cell *matHeaderCellDef>
+        <mat-checkbox (change)="$event ? toggleAllRows() : null"
+                    [checked]="selection.hasValue() && isAllSelected()"
+                    [indeterminate]="selection.hasValue() && !isAllSelected()">
+      </mat-checkbox>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <mat-checkbox (click)="$event.stopPropagation()"
+                    (change)="$event ? selection.toggle(row) : null"
+                    [checked]="selection.isSelected(row)">
+      </mat-checkbox>
+      </mat-cell>
+    </ng-container>
+      
       <!-- User id Definition -->
       <ng-container matColumnDef="id">
-       <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
-       <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
+       <mat-header-cell *matHeaderCellDef> <span>Id</span> </mat-header-cell>
+       <mat-cell *matCellDef="let row"> <span>{{row.id}}</span> </mat-cell>
      </ng-container>
      <!-- User avatar Definition -->
      <ng-container matColumnDef="avatar">
-      <mat-header-cell *matHeaderCellDef> Avatar </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> <span>avatar</span> </mat-header-cell>
       <mat-cell *matCellDef="let row"><app-avatar [src]="row.avatar"></app-avatar></mat-cell>
     </ng-container>
      <!-- User name Definition -->
      <ng-container matColumnDef="firstName">
-       <mat-header-cell *matHeaderCellDef> Firstname </mat-header-cell>
-       <mat-cell *matCellDef="let row"> {{row.firstName}} </mat-cell>
+       <mat-header-cell *matHeaderCellDef> <span>Firstname</span> </mat-header-cell>
+       <mat-cell *matCellDef="let row"> <span>{{row.firstName}}</span> </mat-cell>
      </ng-container>
 
      <!-- Lastname Definition -->
      <ng-container matColumnDef="lastName">
-       <mat-header-cell *matHeaderCellDef> Lastname </mat-header-cell>
-       <mat-cell *matCellDef="let row"> {{row.lastName}} </mat-cell>
+       <mat-header-cell *matHeaderCellDef> <span>Lastname</span> </mat-header-cell>
+       <mat-cell *matCellDef="let row"> <span>{{row.lastName}}</span> </mat-cell>
      </ng-container>
 
      <!-- Email Definition -->
      <ng-container matColumnDef="email">
-       <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
-       <mat-cell *matCellDef="let row"> {{row.email}} </mat-cell>
+       <mat-header-cell *matHeaderCellDef> <span>Email</span> </mat-header-cell>
+       <mat-cell *matCellDef="let row"> <span>{{row.email}}</span> </mat-cell>
      </ng-container>
     <!-- Actions Definition -->
      <ng-container matColumnDef="actions">
