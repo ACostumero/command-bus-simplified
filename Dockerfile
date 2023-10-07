@@ -8,8 +8,8 @@ COPY package.json .
 COPY package-lock.json .
 
 RUN npm install
-RUN npm install -g @angular/cli@15.1.5
-RUN npm install --save-dev @angular-devkit/build-angular@15.1.5
+RUN npm install -g @angular/cli@16.2.5
+RUN npm install --save-dev @angular-devkit/build-angular@16.2.5
  
 COPY . .
  
